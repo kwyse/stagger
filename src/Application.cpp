@@ -3,6 +3,7 @@
 
 
 #include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
 #include <Box2D/Dynamics/b2Fixture.h>
@@ -11,7 +12,7 @@
 
 Application::Application()
 : mWindow(sf::VideoMode(640, 480), "FYP Test Implementation")
-, mWorld(mWindow, sf::Vector2f(0.f, -9.8f))
+, mWorld(mWindow, sf::Vector2f(0.f, -9.8f), 16)
 {
   // Nothing to do
 }
@@ -30,7 +31,13 @@ void Application::launch()
   fixtureDef.shape = &shape;
   fixtureDef.density = 1.f;
   fixtureDef.friction = 0.3f;
+
+  sf::Texture texture;
+  texture.loadFromFile("/Users/krishanwyse/ClionProjects/fyp_implementation/assets/images/box.png");
   fyp::BodySprite bodySprite(mWorld, bodyDef, fixtureDef);
+  bodySprite.setTexture(texture);
+  bodySprite.setSize(sf::Vector2f(2.f, 2.f));
+  bodySprite.setPosition(sf::Vector2f(1.f, 1.f));
 
   while (mWindow.isOpen()) {
     lag += elapsedTime.restart();
@@ -47,6 +54,7 @@ void Application::launch()
     }
 
     mWindow.clear();
+    mWorld.render();
     mWindow.display();
   }
 }
