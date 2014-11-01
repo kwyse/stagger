@@ -7,7 +7,8 @@ set(WARNINGS "-Wall -Wextra -Wshadow -Weffc++ -pedantic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNINGS} -std=c++11 -stdlib=libc++")
 set(SOURCE_FILES src/main.cpp
                  src/Application.cpp
-                 src/fyp/World.cpp)
+                 src/fyp/World.cpp
+                 src/fyp/BodySprite.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)
