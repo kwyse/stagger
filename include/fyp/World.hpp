@@ -6,13 +6,23 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 
+class b2World;
+
+
 namespace fyp {
+
+
+class BodySprite;
 
 
 class World {
 public:
   World(sf::RenderWindow& window, sf::Vector2f gravity);
   ~World();
+
+  b2World* getB2World();
+  void addBody(BodySprite* body);
+  void update();
 
 private:
   class Impl;
