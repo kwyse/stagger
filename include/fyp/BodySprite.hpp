@@ -18,6 +18,9 @@ public:
 
   void update();
   void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+  void setTexture(sf::Texture& texture);
+  void setSize(sf::Vector2f size);
+  void setPosition(sf::Vector2f position);
 
 private:
   class Impl;
