@@ -9,18 +9,18 @@
 
 
 Application::Application()
-: mWindow(sf::VideoMode(640, 480), "FYP Test Implementation")
-, mWorld(mWindow, sf::Vector2f(0.f, -9.8f), 16)
 {
   // Nothing to do
 }
 
 void Application::launch()
 {
-  const sf::Time FRAME_DURATION = sf::milliseconds(1000 / 120);
-  mWorld.setTickRate(120.f);
-  sf::Clock elapsedTime;
-  sf::Time lag = sf::Time::Zero;
+  sf::RenderWindow window(sf::VideoMode(640, 480), "FYP Test Implementation");
+  fyp::World world(window, sf::Vector2f(0.f, -9.8f), 16);
+
+  float tickRate = 120.f;
+  const sf::Time FRAME_DURATION = sf::milliseconds(1000.f / tickRate);
+  world.setTickRate(tickRate);
 
   b2BodyDef bodyDef;
   bodyDef.type = b2_dynamicBody;
@@ -33,27 +33,30 @@ void Application::launch()
 
   sf::Texture texture;
   texture.loadFromFile("/Users/krishanwyse/ClionProjects/fyp_implementation/assets/images/box.png");
-  fyp::BodySprite bodySprite(mWorld, bodyDef, fixtureDef);
+  fyp::BodySprite bodySprite(world, bodyDef, fixtureDef);
   bodySprite.setTexture(texture);
   bodySprite.setSize(sf::Vector2f(2.f, 2.f));
   bodySprite.setPosition(sf::Vector2f(1.f, 1.f));
 
-  while (mWindow.isOpen()) {
+  sf::Clock elapsedTime;
+  sf::Time lag = sf::Time::Zero;
+
+  while (window.isOpen()) {
     lag += elapsedTime.restart();
     sf::Event event;
 
-    while (mWindow.pollEvent(event)) {
+    while (window.pollEvent(event)) {
       if (event.type == sf::Event::Closed)
-        mWindow.close();
+        window.close();
     }
 
     while (lag > FRAME_DURATION) {
-      mWorld.update();
+      world.update();
       lag -= FRAME_DURATION;
     }
 
-    mWindow.clear();
-    mWorld.render();
-    mWindow.display();
+    window.clear();
+    world.render();
+    window.display();
   }
 }

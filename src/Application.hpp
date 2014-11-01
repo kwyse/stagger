@@ -3,10 +3,6 @@
 #define APPLICATION_HPP_
 
 
-#include "../include/fyp/World.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
-
-
 class Application
 {
 public:
@@ -15,10 +11,6 @@ public:
   Application& operator=(const Application&) = delete;
 
   void launch();
-
-private:
-  sf::RenderWindow mWindow;
-  fyp::World mWorld;
 };
 
 #endif // APPLICATION_HPP_
