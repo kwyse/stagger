@@ -3,6 +3,10 @@
 
 
 #include <SFML/Window/Event.hpp>
+#include <Box2D/Dynamics/b2Body.h>
+#include <Box2D/Collision/Shapes/b2PolygonShape.h>
+#include <Box2D/Dynamics/b2Fixture.h>
+#include "../include/fyp/BodySprite.hpp"
 
 
 Application::Application()
@@ -18,6 +22,16 @@ void Application::launch()
   sf::Clock elapsedTime;
   sf::Time lag = sf::Time::Zero;
 
+  b2BodyDef bodyDef;
+  bodyDef.type = b2_dynamicBody;
+  b2PolygonShape shape;
+  shape.SetAsBox(1.f, 1.f);
+  b2FixtureDef fixtureDef;
+  fixtureDef.shape = &shape;
+  fixtureDef.density = 1.f;
+  fixtureDef.friction = 0.3f;
+  fyp::BodySprite bodySprite(mWorld, bodyDef, fixtureDef);
+
   while (mWindow.isOpen()) {
     lag += elapsedTime.restart();
     sf::Event event;
@@ -28,6 +42,7 @@ void Application::launch()
     }
 
     while (lag > FRAME_DURATION) {
+      mWorld.update();
       lag -= FRAME_DURATION;
     }
 
