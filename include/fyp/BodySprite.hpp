@@ -23,7 +23,7 @@ public:
   void setPosition(sf::Vector2f position);
 
 private:
-  class Impl;
+  struct Impl;
   std::unique_ptr<Impl> mImpl;
 };
 

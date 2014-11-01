@@ -31,7 +31,7 @@ public:
   int getPixelsPerMeter() const;
 
 private:
-  class Impl;
+  struct Impl;
   std::unique_ptr<Impl> mImpl;
 };
 

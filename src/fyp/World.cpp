@@ -12,9 +12,8 @@ namespace fyp
 {
 
 
-class World::Impl
+struct World::Impl
 {
-public:
   Impl(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter)
   : mWindow(window)
   , mWorld(b2Vec2(gravity.x, gravity.y))

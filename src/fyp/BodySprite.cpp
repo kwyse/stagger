@@ -7,8 +7,7 @@
 namespace fyp {
 
 
-class BodySprite::Impl {
-public:
+struct BodySprite::Impl {
   Impl(World& world, b2BodyDef& bodyDef, b2FixtureDef& fixtureDef)
   : mBody(world.getB2World()->CreateBody(&bodyDef))
   , mFixture(mBody->CreateFixture(&fixtureDef))
