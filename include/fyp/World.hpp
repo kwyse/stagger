@@ -17,12 +17,15 @@ class BodySprite;
 
 class World {
 public:
-  World(sf::RenderWindow& window, sf::Vector2f gravity);
+  World(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter);
   ~World();
 
   b2World* getB2World();
   void addBody(BodySprite* body);
   void update();
+  void render();
+
+  int getPixelsPerMeter() const;
 
 private:
   class Impl;

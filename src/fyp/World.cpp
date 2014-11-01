@@ -18,20 +18,22 @@ namespace fyp
 class World::Impl
 {
 public:
-  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
+  Impl(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter)
   : mWindow(window)
   , mWorld(b2Vec2(gravity.x, gravity.y))
+  , mPixelsPerMeter(pixelsPerMeter)
   {
     // Nothing to do
   }
 
   sf::RenderWindow& mWindow;
   b2World mWorld;
+  int mPixelsPerMeter;
   std::vector<BodySprite*> mBodies;
 };
 
-World::World(sf::RenderWindow& window, sf::Vector2f gravity)
-: mImpl(new World::Impl(window, gravity))
+World::World(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter)
+: mImpl(new World::Impl(window, gravity, pixelsPerMeter))
 {
   // Nothing to do
 }
@@ -54,6 +56,16 @@ void World::update()
 {
   mImpl->mWorld.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
   for (BodySprite* body : mImpl->mBodies) body->update();
+}
+
+void World::render()
+{
+  for (BodySprite* body : mImpl->mBodies) mImpl->mWindow.draw(*body);
+}
+
+int World::getPixelsPerMeter() const
+{
+  return mImpl->mPixelsPerMeter;
 }
 
 
