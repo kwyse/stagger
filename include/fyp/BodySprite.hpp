@@ -2,9 +2,9 @@
 #define FYP_BODY_SPRITE_HPP_
 
 
+#include "World.hpp"
 #include <SFML/Graphics/Drawable.hpp>
 #include <Box2D/Dynamics/b2Fixture.h>
-#include "../../include/fyp/World.hpp"
 
 
 namespace fyp {

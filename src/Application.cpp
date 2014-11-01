@@ -1,7 +1,5 @@
 // Application.cpp
 #include "Application.hpp"
-
-
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <Box2D/Dynamics/b2Body.h>
@@ -20,6 +18,7 @@ Application::Application()
 void Application::launch()
 {
   const sf::Time FRAME_DURATION = sf::milliseconds(1000 / 120);
+  mWorld.setTickRate(120.f);
   sf::Clock elapsedTime;
   sf::Time lag = sf::Time::Zero;
 

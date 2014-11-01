@@ -18,6 +18,8 @@ class BodySprite;
 class World {
 public:
   World(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter);
+  World(const World&) = delete;
+  World& operator=(const World&) = delete;
   ~World();
 
   b2World* getB2World();
@@ -25,6 +27,7 @@ public:
   void update();
   void render();
 
+  void setTickRate(float ticksPerSecond);
   int getPixelsPerMeter() const;
 
 private:

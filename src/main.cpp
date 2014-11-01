@@ -1,6 +1,4 @@
 // main.cpp
-
-
 #include "Application.hpp"
 
 
