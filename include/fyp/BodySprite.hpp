@@ -5,6 +5,7 @@
 #include "World.hpp"
 #include <SFML/Graphics/Drawable.hpp>
 #include <Box2D/Dynamics/b2Fixture.h>
+#include <memory>
 
 
 namespace fyp {

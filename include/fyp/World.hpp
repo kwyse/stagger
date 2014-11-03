@@ -4,6 +4,7 @@
 
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <memory>
 
 
 class b2World;

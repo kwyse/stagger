@@ -32,7 +32,7 @@ void Application::launch()
   fixtureDef.friction = 0.3f;
 
   sf::Texture texture;
-  texture.loadFromFile("/Users/krishanwyse/ClionProjects/fyp_implementation/assets/images/box.png");
+  texture.loadFromFile("../assets/images/box.png");
   fyp::BodySprite bodySprite(world, bodyDef, fixtureDef);
   bodySprite.setTexture(texture);
   bodySprite.setSize(sf::Vector2f(2.f, 2.f));
