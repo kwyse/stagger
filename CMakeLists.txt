@@ -33,6 +33,6 @@ set(SFML_AUDIO    ${SFML_DIR}/lib/libsfml-audio${SFML_EXT})
 set(SFML_NETWORK  ${SFML_DIR}/lib/libsfml-network${SFML_EXT})
 set(BOX2D         ${BOX2D_DIR}/lib/libBox2D${BOX2D_EXT})
 
-include_directories(SYSTEM ${SFML_DIR}/include ${BOX2D_DIR}/include)
+include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/include ${SFML_DIR}/include ${BOX2D_DIR}/include)
 add_executable(${EXECUTABLE} ${SOURCE_FILES})
 target_link_libraries(${EXECUTABLE} ${SFML_GRAPHICS} ${SFML_WINDOW} ${SFML_SYSTEM} ${BOX2D})

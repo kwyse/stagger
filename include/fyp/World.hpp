@@ -3,11 +3,18 @@
 #define FYP_WORLD_HPP_
 
 
-#include <SFML/Graphics/RenderWindow.hpp>
 #include <memory>
+
+#include <SFML/System/Vector2.hpp>
 
 
 class b2World;
+
+
+namespace sf
+{
+class RenderWindow;
+}
 
 
 namespace fyp {

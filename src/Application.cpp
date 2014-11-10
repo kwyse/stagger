@@ -1,11 +1,15 @@
 // Application.cpp
 #include "Application.hpp"
-#include <SFML/Window/Event.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <Box2D/Dynamics/b2Body.h>
+
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
+#include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/b2Fixture.h>
-#include "../include/fyp/BodySprite.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Window/Event.hpp>
+
+#include "fyp/BodySprite.hpp"
+#include "fyp/World.hpp"
 
 
 Application::Application()

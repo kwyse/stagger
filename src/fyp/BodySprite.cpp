@@ -1,7 +1,13 @@
 // BodySprite.cpp
-#include "../../include/fyp/BodySprite.hpp"
+#include "fyp/BodySprite.hpp"
+
+#include <Box2D/Dynamics/b2Body.h>
+#include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+
+#include "fyp/World.hpp"
 
 
 namespace fyp {

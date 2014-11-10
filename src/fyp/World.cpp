@@ -1,7 +1,12 @@
 // fyp/World.cpp
-#include "../../include/fyp/World.hpp"
-#include "../../include/fyp/BodySprite.hpp"
+#include "fyp/World.hpp"
+
+#include <vector>
+
 #include <Box2D/Dynamics/b2World.h>
+#include <SFML/Graphics/RenderWindow.hpp>
+
+#include "fyp/BodySprite.hpp"
 
 
 const int32 VEL_ITERATIONS = 6;

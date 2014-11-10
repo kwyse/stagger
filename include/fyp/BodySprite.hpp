@@ -2,13 +2,19 @@
 #define FYP_BODY_SPRITE_HPP_
 
 
-#include "World.hpp"
-#include <SFML/Graphics/Drawable.hpp>
-#include <Box2D/Dynamics/b2Fixture.h>
 #include <memory>
+
+#include <SFML/Graphics/Drawable.hpp>
+
+
+class b2BodyDef;
+class b2FixtureDef;
 
 
 namespace fyp {
+
+
+class World;
 
 
 class BodySprite : public sf::Drawable
