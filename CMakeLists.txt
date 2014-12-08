@@ -3,7 +3,6 @@ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
 project(fyp_implementation)
 set(EXECUTABLE fyp_implementation)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
 set(WARNINGS "-Wall -Wextra -Wshadow -Weffc++ -pedantic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNINGS} -std=c++11")
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
