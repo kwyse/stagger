@@ -9,10 +9,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNINGS} -std=c++11")
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 endif()
-set(SOURCE_FILES src/main.cpp
-                 src/Application.cpp
-                 src/fyp/World.cpp
-                 src/fyp/BodySprite.cpp)
+set(SOURCE_FILES src/fyp/World.cpp
+                 src/fyp/BodySprite.cpp
+                 test/catch_init.cpp
+                 test/fyp/WorldTest.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)
@@ -33,6 +33,6 @@ set(SFML_AUDIO    ${SFML_DIR}/lib/libsfml-audio${SFML_EXT})
 set(SFML_NETWORK  ${SFML_DIR}/lib/libsfml-network${SFML_EXT})
 set(BOX2D         ${BOX2D_DIR}/lib/libBox2D${BOX2D_EXT})
 
-include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/include ${SFML_DIR}/include ${BOX2D_DIR}/include)
+include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/lib ${SFML_DIR}/include ${BOX2D_DIR}/include)
 add_executable(${EXECUTABLE} ${SOURCE_FILES})
 target_link_libraries(${EXECUTABLE} ${SFML_GRAPHICS} ${SFML_WINDOW} ${SFML_SYSTEM} ${BOX2D})
