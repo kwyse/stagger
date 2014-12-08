@@ -11,7 +11,8 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif()
 set(SOURCE_FILES src/fyp/World.cpp
                  src/fyp/BodySprite.cpp
-                 test/catch_init.cpp)
+                 test/catch_init.cpp
+                 test/fyp/WorldTest.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)
