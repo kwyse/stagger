@@ -25,12 +25,12 @@ set(BOX2D_DIR /usr/local/Cellar/box2d/2.3.0)
 # Change to reflect desired Box2D version and file extension native to platform
 set(BOX2D_EXT .dylib)
 
-set(SFML_SYSTEM   ${SFML_DIR}/lib/libsfml-system${SFML_EXT})
-set(SFML_WINDOW   ${SFML_DIR}/lib/libsfml-window${SFML_EXT})
-set(SFML_GRAPHICS ${SFML_DIR}/lib/libsfml-graphics${SFML_EXT})
-set(SFML_AUDIO    ${SFML_DIR}/lib/libsfml-audio${SFML_EXT})
-set(SFML_NETWORK  ${SFML_DIR}/lib/libsfml-network${SFML_EXT})
-set(BOX2D         ${BOX2D_DIR}/lib/libBox2D${BOX2D_EXT})
+find_library(SFML_SYSTEM   sfml-system   ${SFML_DIR}/lib/libsfml-system${SFML_EXT})
+find_library(SFML_WINDOW   sfml-window   ${SFML_DIR}/lib/libsfml-window${SFML_EXT})
+find_library(SFML_GRAPHICS sfml-graphics ${SFML_DIR}/lib/libsfml-graphics${SFML_EXT})
+find_library(SFML_AUDIO    sfml-audio    ${SFML_DIR}/lib/libsfml-audio${SFML_EXT})
+find_library(SFML_NETWORK  sfml-network  ${SFML_DIR}/lib/libsfml-network${SFML_EXT})
+find_library(BOX2D         Box2D         ${BOX2D_DIR}/lib/libBox2D${BOX2D_EXT})
 
 include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/lib ${SFML_DIR}/include ${BOX2D_DIR}/include)
 add_executable(${EXECUTABLE} ${SOURCE_FILES})
