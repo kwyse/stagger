@@ -19,26 +19,25 @@ namespace fyp
 
 struct World::Impl
 {
-  Impl(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter)
+  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
   : mWindow(window)
   , mWorld(b2Vec2(gravity.x, gravity.y))
-  , mBodies()
-  , mPixelsPerMeter(pixelsPerMeter)
+  , mPixelsPerMeter(16)
   , mTickRate(120.f)
-
+  , mBodies()
   {
     // Nothing to do
   }
 
   sf::RenderWindow& mWindow;
   b2World mWorld;
-  std::vector<BodySprite*> mBodies;
   int mPixelsPerMeter;
   float mTickRate;
+  std::vector<BodySprite*> mBodies;
 };
 
-World::World(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter)
-: mImpl(new World::Impl(window, gravity, pixelsPerMeter))
+World::World(sf::RenderWindow& window, sf::Vector2f gravity)
+: mImpl(new World::Impl(window, gravity))
 {
   // Nothing to do
 }
@@ -48,13 +47,9 @@ World::~World()
   // Nothing to do
 }
 
-b2World* World::getB2World()
+void World::processInput()
 {
-  return &mImpl->mWorld;
-}
-
-void World::addBody(BodySprite* body) {
-  mImpl->mBodies.push_back(body);
+  // Nothing to do
 }
 
 void World::update()
@@ -63,9 +58,21 @@ void World::update()
   for (BodySprite* body : mImpl->mBodies) body->update();
 }
 
-void World::render()
+void World::render() {
+  for (BodySprite *body : mImpl->mBodies) mImpl->mWindow.draw(*body);
+}
+
+void World::addBody(BodySprite* body) {
+  mImpl->mBodies.push_back(body);
+}
+void World::setGravity(sf::Vector2f gravity)
 {
-  for (BodySprite* body : mImpl->mBodies) mImpl->mWindow.draw(*body);
+  mImpl->mWorld.SetGravity(b2Vec2(gravity.x, gravity.y));
+}
+
+void World::setPixelsPerMeter(int pixels)
+{
+  mImpl->mPixelsPerMeter = pixels;
 }
 
 void World::setTickRate(float ticksPerSecond)
@@ -73,9 +80,20 @@ void World::setTickRate(float ticksPerSecond)
   mImpl->mTickRate = ticksPerSecond;
 }
 
+sf::Vector2f World::getGravity() const
+{
+  b2Vec2 gravity = mImpl->mWorld.GetGravity();
+  return sf::Vector2f(gravity.x, gravity.y);
+}
+
 int World::getPixelsPerMeter() const
 {
   return mImpl->mPixelsPerMeter;
+}
+
+b2World* World::getB2World() const
+{
+  return &mImpl->mWorld;
 }
 
 

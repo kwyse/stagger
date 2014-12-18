@@ -25,18 +25,25 @@ class BodySprite;
 
 class World {
 public:
-  World(sf::RenderWindow& window, sf::Vector2f gravity, int pixelsPerMeter);
+  World(sf::RenderWindow& window,
+        sf::Vector2f gravity = sf::Vector2f(0.f, 0.f));
   World(const World&) = delete;
   World& operator=(const World&) = delete;
   ~World();
 
-  b2World* getB2World();
-  void addBody(BodySprite* body);
+  void processInput();
   void update();
   void render();
 
-  void setTickRate(float ticksPerSecond);
+  void addBody(BodySprite* body);
+
+  void setGravity(sf::Vector2f gravity);
+  void setPixelsPerMeter(int pixels);
+  void setTickRate(float ticks);
+
+  sf::Vector2f getGravity() const;
   int getPixelsPerMeter() const;
+  b2World* getB2World() const;
 
 private:
   struct Impl;
