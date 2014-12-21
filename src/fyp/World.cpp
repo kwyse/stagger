@@ -70,10 +70,10 @@ void World::update()
 void World::render() {
   for (BodySprite *body : mImpl->mBodies) mImpl->mWindow.draw(*body);
   for (CircleEntity* entity : mImpl->mCircles) {
-    mImpl->mWindow.draw(entity->getRenderedShape());
+    mImpl->mWindow.draw(entity->getRenderShape());
   }
   for (RectangleEntity* entity : mImpl->mRectangles) {
-    mImpl->mWindow.draw(entity->getRenderedShape());
+    mImpl->mWindow.draw(entity->getRenderShape());
   }
 }
 
