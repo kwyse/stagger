@@ -39,7 +39,9 @@ template<typename Shape>
 class Entity
 {
 public:
-  Entity<Shape>(World *world);
+  Entity(World *world, float radius); // sf::CircleShape
+  Entity(World *world, sf::Vector2f size); // sf::RectangleShape
+  Entity(World *world, sf::Vector2f start, sf::Vector2f end); // b2EdgeShape
 
   void update();
 
@@ -47,8 +49,6 @@ public:
   sf::Drawable& getRenderShape();
 
 private:
-  void initializeFixture();
-
   Shape mShape;
   b2Body *mBody;
   int mPixelsPerMeter;
@@ -58,18 +58,6 @@ using CircleEntity = Entity<sf::CircleShape>;
 using RectangleEntity = Entity<sf::RectangleShape>;
 using ConvexEntity = Entity<sf::ConvexShape>;
 using EdgeEntity = Entity<b2EdgeShape>;
-
-template<typename Shape>
-Entity<Shape>::Entity(World *world)
-: mPixelsPerMeter(world->getPixelsPerMeter())
-{
-  b2BodyDef bodyDef;
-  bodyDef.type = b2_dynamicBody;
-  mBody = world->getB2World()->CreateBody(&bodyDef);
-  initializeFixture();
-
-  world->addEntity(this);
-}
 
 
 } // namespace
