@@ -7,6 +7,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "fyp/BodySprite.hpp"
+#include "fyp/Entity.hpp"
 
 
 const int32 VEL_ITERATIONS = 6;
@@ -25,6 +26,9 @@ struct World::Impl
   , mPixelsPerMeter(16)
   , mTickRate(120.f)
   , mBodies()
+  , mCircles()
+  , mRectangles()
+  , mEdges()
   {
     // Nothing to do
   }
@@ -34,6 +38,9 @@ struct World::Impl
   int mPixelsPerMeter;
   float mTickRate;
   std::vector<BodySprite*> mBodies;
+  std::vector<CircleEntity*> mCircles;
+  std::vector<RectangleEntity*> mRectangles;
+  std::vector<EdgeEntity*> mEdges;
 };
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
@@ -56,15 +63,36 @@ void World::update()
 {
   mImpl->mWorld.Step(1.f / mImpl->mTickRate, VEL_ITERATIONS, POS_ITERATIONS);
   for (BodySprite* body : mImpl->mBodies) body->update();
+  for (CircleEntity* entity : mImpl->mCircles) entity->update();
+  for (RectangleEntity* entity : mImpl->mRectangles) entity->update();
 }
 
 void World::render() {
   for (BodySprite *body : mImpl->mBodies) mImpl->mWindow.draw(*body);
+  for (CircleEntity* entity : mImpl->mCircles) {
+    mImpl->mWindow.draw(entity->getRenderShape());
+  }
+  for (RectangleEntity* entity : mImpl->mRectangles) {
+    mImpl->mWindow.draw(entity->getRenderShape());
+  }
 }
 
 void World::addBody(BodySprite* body) {
   mImpl->mBodies.push_back(body);
 }
+
+void World::addEntity(CircleEntity* entity) {
+  mImpl->mCircles.push_back(entity);
+}
+
+void World::addEntity(RectangleEntity* entity) {
+  mImpl->mRectangles.push_back(entity);
+}
+
+void World::addEntity(EdgeEntity* entity) {
+  mImpl->mEdges.push_back(entity);
+}
+
 void World::setGravity(sf::Vector2f gravity)
 {
   mImpl->mWorld.SetGravity(b2Vec2(gravity.x, gravity.y));

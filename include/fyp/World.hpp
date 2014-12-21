@@ -6,6 +6,9 @@
 #include <memory>
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <Box2D/Collision/Shapes/b2EdgeShape.h>
 
 
 class b2World;
@@ -17,13 +20,17 @@ class RenderWindow;
 }
 
 
-namespace fyp {
+namespace fyp
+{
 
 
 class BodySprite;
+template <typename Shape>
+class Entity;
 
 
-class World {
+class World
+{
 public:
   World(sf::RenderWindow& window,
         sf::Vector2f gravity = sf::Vector2f(0.f, 0.f));
@@ -36,6 +43,9 @@ public:
   void render();
 
   void addBody(BodySprite* body);
+  void addEntity(Entity<sf::CircleShape>* entity);
+  void addEntity(Entity<sf::RectangleShape>* entity);
+  void addEntity(Entity<b2EdgeShape>* entity);
 
   void setGravity(sf::Vector2f gravity);
   void setPixelsPerMeter(int pixels);
