@@ -28,6 +28,7 @@ struct World::Impl
   , mBodies()
   , mCircles()
   , mRectangles()
+  , mEdges()
   {
     // Nothing to do
   }
@@ -39,6 +40,7 @@ struct World::Impl
   std::vector<BodySprite*> mBodies;
   std::vector<CircleEntity*> mCircles;
   std::vector<RectangleEntity*> mRectangles;
+  std::vector<EdgeEntity*> mEdges;
 };
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
@@ -66,8 +68,12 @@ void World::update()
 
 void World::render() {
   for (BodySprite *body : mImpl->mBodies) mImpl->mWindow.draw(*body);
-  for (auto *entity : mImpl->mCircles) mImpl->mWindow.draw(*entity);
-  for (auto *entity : mImpl->mRectangles) mImpl->mWindow.draw(*entity);
+  for (CircleEntity* entity : mImpl->mCircles) {
+    mImpl->mWindow.draw(entity->getRenderedShape());
+  }
+  for (RectangleEntity* entity : mImpl->mRectangles) {
+    mImpl->mWindow.draw(entity->getRenderedShape());
+  }
 }
 
 void World::addBody(BodySprite* body) {
@@ -80,6 +86,10 @@ void World::addEntity(CircleEntity* entity) {
 
 void World::addEntity(RectangleEntity* entity) {
   mImpl->mRectangles.push_back(entity);
+}
+
+void World::addEntity(EdgeEntity* entity) {
+  mImpl->mEdges.push_back(entity);
 }
 
 void World::setGravity(sf::Vector2f gravity)

@@ -10,6 +10,7 @@
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
+#include <Box2D/Collision/Shapes/b2EdgeShape.h>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/ConvexShape.hpp>
@@ -34,17 +35,18 @@ class BodySprite;
 
 
 template<typename Shape>
-class Entity : public sf::Drawable
+class Entity
 {
 public:
   Entity<Shape>(World *world);
 
-  void draw(sf::RenderTarget &target, sf::RenderStates states) const;
   void setPosition(sf::Vector2f position);
+  sf::Drawable& getRenderedShape();
 
 private:
   void initializeFixture(sf::CircleShape shape);
   void initializeFixture(sf::RectangleShape shape);
+  void initializeFixture(b2EdgeShape& shape);
 
   Shape mShape;
   b2Body *mBody;
@@ -54,6 +56,7 @@ private:
 using CircleEntity = Entity<sf::CircleShape>;
 using RectangleEntity = Entity<sf::RectangleShape>;
 using ConvexEntity = Entity<sf::ConvexShape>;
+using EdgeEntity = Entity<b2EdgeShape>;
 
 template<typename Shape>
 Entity<Shape>::Entity(World *world)
@@ -76,6 +79,8 @@ void Entity<Shape>::initializeFixture(sf::CircleShape shape)
 
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &fixtureShape;
+  fixtureDef.density = 1.f;
+  fixtureDef.friction = 0.3f;
   mBody->CreateFixture(&fixtureDef);
 }
 
@@ -88,24 +93,41 @@ void Entity<Shape>::initializeFixture(sf::RectangleShape shape)
 
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &fixtureShape;
+  fixtureDef.density = 1.f;
+  fixtureDef.friction = 0.3f;
+  mBody->CreateFixture(&fixtureDef);
+}
+
+template<typename Shape>
+void Entity<Shape>::initializeFixture(b2EdgeShape& shape)
+{
+  b2Vec2 v1(10.f, 10.f);
+  b2Vec2 v2(50.f, 10.f);
+  shape.Set(v1, v2);
+
+  b2FixtureDef fixtureDef;
+  fixtureDef.shape = &shape;
+  fixtureDef.density = 1.f;
+  fixtureDef.friction = 0.3f;
   mBody->CreateFixture(&fixtureDef);
 }
 
 template<typename Shape>
 void Entity<Shape>::setPosition(sf::Vector2f position)
 {
-  mBody->SetTransform(b2Vec2(position.x, position.y), mBody->GetAngle());
+  // TODO: This must account for size of body
+  mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
   mShape.setPosition(position.x * mPixelsPerMeter,
-      position.y * mPixelsPerMeter);
+                     position.y * mPixelsPerMeter);
 }
 
 template<typename Shape>
-void Entity<Shape>::draw(sf::RenderTarget &target,
-                         sf::RenderStates states) const
+sf::Drawable& Entity<Shape>::getRenderedShape()
 {
-  // If Shape is an sf::Shape
-  target.draw(mShape, states);
+  return mShape;
 }
+
+
 } // namespace
 
 

@@ -8,6 +8,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <Box2D/Collision/Shapes/b2EdgeShape.h>
 
 
 class b2World;
@@ -44,6 +45,7 @@ public:
   void addBody(BodySprite* body);
   void addEntity(Entity<sf::CircleShape>* entity);
   void addEntity(Entity<sf::RectangleShape>* entity);
+  void addEntity(Entity<b2EdgeShape>* entity);
 
   void setGravity(sf::Vector2f gravity);
   void setPixelsPerMeter(int pixels);
