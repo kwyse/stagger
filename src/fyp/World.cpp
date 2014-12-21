@@ -63,7 +63,8 @@ void World::update()
 {
   mImpl->mWorld.Step(1.f / mImpl->mTickRate, VEL_ITERATIONS, POS_ITERATIONS);
   for (BodySprite* body : mImpl->mBodies) body->update();
-  // Update entities
+  for (CircleEntity* entity : mImpl->mCircles) entity->update();
+  for (RectangleEntity* entity : mImpl->mRectangles) entity->update();
 }
 
 void World::render() {

@@ -40,6 +40,8 @@ class Entity
 public:
   Entity<Shape>(World *world);
 
+  void update();
+
   void setPosition(sf::Vector2f position);
   sf::Drawable& getRenderedShape();
 
@@ -68,6 +70,15 @@ Entity<Shape>::Entity(World *world)
   initializeFixture(mShape);
 
   world->addEntity(this);
+}
+
+template <typename Shape>
+void Entity<Shape>::update()
+{
+  b2Vec2 pos = mBody->GetPosition();
+  mShape.setPosition(
+      mPixelsPerMeter * (pos.x - 0.5f * 2.f),
+      mPixelsPerMeter * (-pos.y - 0.5f * 2.f));
 }
 
 template<typename Shape>
