@@ -10,6 +10,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif()
 set(SOURCE_FILES src/fyp/World.cpp
                  src/fyp/BodySprite.cpp
+                 src/fyp/Entity.cpp
                  test/catch_init.cpp
                  test/fyp/WorldTest.cpp)
 
