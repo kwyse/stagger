@@ -34,6 +34,7 @@ public:
   sf::Vector2f getPoint(unsigned int index) const;
 
 private:
+  // TODO: Pimpl this
   float mRadius;
   unsigned int mPointCount;
 };
