@@ -18,6 +18,7 @@ CircleEntity::CircleEntity(World* world,
 , mRadius(radius)
 , mPointCount(pointCount)
 {
+  Shape::setOrigin(mRadius * mPixelsPerMeter, mRadius* mPixelsPerMeter);
   Shape::update();
 
   b2CircleShape fixtureShape;
@@ -37,8 +38,11 @@ CircleEntity::CircleEntity(World* world,
 void CircleEntity::update()
 {
   b2Vec2 position = mBody->GetPosition();
-  Shape::setPosition((position.x - mRadius) * mPixelsPerMeter,
-                    (-position.y - mRadius) * mPixelsPerMeter);
+  static const float degreesPerRadian = 57.2957795f;
+
+  Shape::setRotation(-mBody->GetAngle() * degreesPerRadian);
+  Shape::setPosition(position.x * mPixelsPerMeter,
+                    -position.y * mPixelsPerMeter);
 }
 
 void CircleEntity::setRadius(float radius)
@@ -56,8 +60,8 @@ void CircleEntity::setPosition(float x, float y)
 void CircleEntity::setPosition(const sf::Vector2f& position)
 {
   mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
-  Shape::setPosition((position.x - mRadius) * mPixelsPerMeter,
-                    (-position.y - mRadius) * mPixelsPerMeter);
+  Shape::setPosition(position.x * mPixelsPerMeter,
+                    -position.y * mPixelsPerMeter);
 }
 
 float CircleEntity::getRadius() const

@@ -18,6 +18,9 @@ public:
                   const sf::Vector2f& size,
                   BodyType type = BodyType::STATIC);
 
+  // TODO: Needs copy constructor
+  // TODO: Needs setRotation()
+
   void update();
 
   void setSize(float width, float height);

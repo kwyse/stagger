@@ -23,6 +23,9 @@ public:
                unsigned int pointCount,
                BodyType type = BodyType::STATIC);
 
+  // TODO: Needs copy constructor
+  // TODO: Needs setRotation()
+
   void update();
 
   void setRadius(float radius);

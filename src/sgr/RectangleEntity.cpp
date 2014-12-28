@@ -16,6 +16,8 @@ RectangleEntity::RectangleEntity(World* world,
 : RenderEntity(world, type)
 , mSize(size)
 {
+  Shape::setOrigin((mSize.x / 2) * mPixelsPerMeter,
+                   (mSize.y / 2) * mPixelsPerMeter);
   Shape::update();
 
   b2PolygonShape fixtureShape;
@@ -26,8 +28,11 @@ RectangleEntity::RectangleEntity(World* world,
 void RectangleEntity::update()
 {
   b2Vec2 position = mBody->GetPosition();
-  Shape::setPosition((position.x - mSize.x / 2) * mPixelsPerMeter,
-                    (-position.y - mSize.y / 2) * mPixelsPerMeter);
+  static const float degreesPerRadian = 57.2957795f;
+
+  Shape::setRotation(-mBody->GetAngle() * degreesPerRadian);
+  Shape::setPosition(position.x * mPixelsPerMeter,
+                    -position.y * mPixelsPerMeter);
 }
 
 void RectangleEntity::setSize(float width, float height)
@@ -55,8 +60,8 @@ void RectangleEntity::setPosition(float x, float y)
 void RectangleEntity::setPosition(const sf::Vector2f& position)
 {
   mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
-  Shape::setPosition((position.x - mSize.x / 2) * mPixelsPerMeter,
-                    (-position.y - mSize.y / 2) * mPixelsPerMeter);
+  Shape::setPosition(position.x * mPixelsPerMeter,
+                    -position.y * mPixelsPerMeter);
 }
 
 const sf::Vector2f& RectangleEntity::getSize() const

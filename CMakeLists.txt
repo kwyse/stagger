@@ -12,6 +12,7 @@ set(SOURCE_FILES src/sgr/World.cpp
                  src/sgr/RenderEntity.cpp
                  src/sgr/CircleEntity.cpp
                  src/sgr/RectangleEntity.cpp
+                 src/sgr/EdgeEntity.cpp
                  test/catch_init.cpp
                  test/fyp/WorldTest.cpp)
 

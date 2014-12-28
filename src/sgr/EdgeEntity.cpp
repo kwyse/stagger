@@ -21,6 +21,7 @@ EdgeEntity::EdgeEntity(World* world,
 , RenderEntity(world, type)
 , mEdge({ sf::Vertex(start), sf::Vertex(end) })
 {
+  // TODO: Remove this after integrating with RenderEntity
   b2BodyDef bodyDef;
   switch(type) {
     case BodyType::STATIC:
