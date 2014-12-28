@@ -16,7 +16,7 @@ namespace sgr
 class World;
 
 
-class EdgeEntity : public sf::Drawable
+class EdgeEntity : public RenderEntity
 {
 public:
   EdgeEntity(World* world,
@@ -24,7 +24,11 @@ public:
              const sf::Vector2f& end,
              BodyType type = BodyType::STATIC);
 
+  void update();
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+  unsigned int getPointCount() const;
+  sf::Vector2f getPoint(unsigned int index) const;
 
 private:
   // TODO: Pimpl this
