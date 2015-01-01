@@ -3,6 +3,7 @@
 #define SGR_EDGE_ENTITY_HPP_
 
 
+#include <array>
 #include <memory>
 #include <Box2D/Dynamics/b2Body.h>
 #include <SFML/Graphics/Drawable.hpp>

@@ -28,7 +28,7 @@ struct World::Impl
   }
 
   sf::RenderWindow& mWindow;
-  b2World mWorld;
+  b2World mWorld; // TODO: Should this be dynamically allocated?
   int mPixelsPerMeter;
   float mTicksPerSecond;
   std::vector<RenderEntity*> mEntities;
