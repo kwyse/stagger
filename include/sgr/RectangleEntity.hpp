@@ -21,8 +21,6 @@ public:
   // TODO: Needs copy constructor
   // TODO: Needs setRotation()
 
-  void update();
-
   void setSize(float width, float height);
   void setSize(const sf::Vector2f& size);
 

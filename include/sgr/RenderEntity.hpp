@@ -30,7 +30,7 @@ class RenderEntity : public sf::Shape
 public:
   explicit RenderEntity(World* world, BodyType type = BodyType::STATIC);
 
-  virtual void update() = 0;
+  void update();
 
   void setPosition(float x, float y);
   void setPosition(const sf::Vector2f& position);

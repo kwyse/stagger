@@ -36,15 +36,6 @@ CircleEntity::CircleEntity(World* world,
   // Nothing to do
 }
 
-void CircleEntity::update()
-{
-  b2Vec2 position = mBody->GetPosition();
-
-  Shape::setRotation(-mBody->GetAngle() * DEGREES_PER_RADIAN);
-  Shape::setPosition(position.x * mPixelsPerMeter,
-                    -position.y * mPixelsPerMeter);
-}
-
 void CircleEntity::setRadius(float radius)
 {
   mRadius = radius;

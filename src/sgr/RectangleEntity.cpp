@@ -25,15 +25,6 @@ RectangleEntity::RectangleEntity(World* world,
   initializeFixture(&fixtureShape);
 }
 
-void RectangleEntity::update()
-{
-  b2Vec2 position = mBody->GetPosition();
-
-  Shape::setRotation(-mBody->GetAngle() * DEGREES_PER_RADIAN);
-  Shape::setPosition(position.x * mPixelsPerMeter,
-                    -position.y * mPixelsPerMeter);
-}
-
 void RectangleEntity::setSize(float width, float height)
 {
   setSize(sf::Vector2f(width, height));

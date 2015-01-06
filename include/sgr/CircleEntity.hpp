@@ -26,8 +26,6 @@ public:
   // TODO: Needs copy constructor
   // TODO: Needs setRotation()
 
-  void update();
-
   void setRadius(float radius);
 
   float getRadius() const;

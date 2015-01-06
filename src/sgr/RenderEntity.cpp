@@ -31,6 +31,15 @@ RenderEntity::RenderEntity(World* world, BodyType type)
   world->addEntity(this);
 }
 
+void RenderEntity::update()
+{
+  b2Vec2 position = mBody->GetPosition();
+
+  Shape::setRotation(-mBody->GetAngle() * DEGREES_PER_RADIAN);
+  Shape::setPosition(position.x * mPixelsPerMeter,
+                    -position.y * mPixelsPerMeter);
+}
+
 void RenderEntity::setPosition(float x, float y)
 {
   setPosition(sf::Vector2f(x, y));
