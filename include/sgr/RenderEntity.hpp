@@ -32,6 +32,9 @@ public:
 
   virtual void update() = 0;
 
+  void setPosition(float x, float y);
+  void setPosition(const sf::Vector2f& position);
+
   void setAngularVelocity(float angle);
   void setLinearVelocity(float x, float y);
   void setLinearVelocity(const sf::Vector2f& velocity);

@@ -25,8 +25,6 @@ public:
 
   void setSize(float width, float height);
   void setSize(const sf::Vector2f& size);
-  void setPosition(float x, float y);
-  void setPosition(const sf::Vector2f& position);
 
   const sf::Vector2f& getSize() const;
   unsigned int getPointCount() const;

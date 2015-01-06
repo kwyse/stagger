@@ -29,8 +29,6 @@ public:
   void update();
 
   void setRadius(float radius);
-  void setPosition(float x, float y);
-  void setPosition(const sf::Vector2f& position);
 
   float getRadius() const;
   unsigned int getPointCount() const;

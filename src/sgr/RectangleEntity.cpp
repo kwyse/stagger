@@ -51,18 +51,6 @@ void RectangleEntity::setSize(const sf::Vector2f& size)
   Shape::update();
 }
 
-void RectangleEntity::setPosition(float x, float y)
-{
-  setPosition(sf::Vector2f(x, y));
-}
-
-void RectangleEntity::setPosition(const sf::Vector2f& position)
-{
-  mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
-  Shape::setPosition(position.x * mPixelsPerMeter,
-                    -position.y * mPixelsPerMeter);
-}
-
 const sf::Vector2f& RectangleEntity::getSize() const
 {
   return mSize;

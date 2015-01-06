@@ -52,18 +52,6 @@ void CircleEntity::setRadius(float radius)
   Shape::update();
 }
 
-void CircleEntity::setPosition(float x, float y)
-{
-  setPosition(sf::Vector2f(x, y));
-}
-
-void CircleEntity::setPosition(const sf::Vector2f& position)
-{
-  mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
-  Shape::setPosition(position.x * mPixelsPerMeter,
-                    -position.y * mPixelsPerMeter);
-}
-
 float CircleEntity::getRadius() const
 {
   return mRadius;
