@@ -67,6 +67,28 @@ void RenderEntity::setLinearVelocity(const sf::Vector2f& velocity)
   mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.x));
 }
 
+sf::Vector2f RenderEntity::getPosition() const
+{
+  b2Vec2 position = mBody->GetPosition();
+  return sf::Vector2f(position.x, position.y);
+}
+
+float RenderEntity::getAngle() const
+{
+  return mBody->GetAngle() * DEGREES_PER_RADIAN;
+}
+
+float RenderEntity::getAngularVelocity() const
+{
+  return mBody->GetAngularVelocity() * DEGREES_PER_RADIAN;
+}
+
+sf::Vector2f RenderEntity::getLinearVelocity() const
+{
+  b2Vec2 linearVelocity = mBody->GetLinearVelocity();
+  return sf::Vector2f(linearVelocity.x, linearVelocity.y);
+}
+
 void RenderEntity::initializeFixture(b2Shape* shape)
 {
   b2FixtureDef fixtureDef;

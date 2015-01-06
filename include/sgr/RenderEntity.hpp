@@ -39,6 +39,11 @@ public:
   void setLinearVelocity(float x, float y);
   void setLinearVelocity(const sf::Vector2f& velocity);
 
+  sf::Vector2f getPosition() const;
+  float getAngle() const;
+  float getAngularVelocity() const;
+  sf::Vector2f getLinearVelocity() const;
+
 protected:
   void initializeFixture(b2Shape* shape);
 
