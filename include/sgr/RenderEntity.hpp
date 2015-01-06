@@ -32,8 +32,14 @@ public:
 
   virtual void update() = 0;
 
+  void setAngularVelocity(float angle);
+  void setLinearVelocity(float x, float y);
+  void setLinearVelocity(const sf::Vector2f& velocity);
+
 protected:
   void initializeFixture(b2Shape* shape);
+
+  static constexpr float DEGREES_PER_RADIAN = 57.2957795f;
 
   b2Body* mBody;
   int mPixelsPerMeter;

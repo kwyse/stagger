@@ -28,9 +28,8 @@ RectangleEntity::RectangleEntity(World* world,
 void RectangleEntity::update()
 {
   b2Vec2 position = mBody->GetPosition();
-  static const float degreesPerRadian = 57.2957795f;
 
-  Shape::setRotation(-mBody->GetAngle() * degreesPerRadian);
+  Shape::setRotation(-mBody->GetAngle() * DEGREES_PER_RADIAN);
   Shape::setPosition(position.x * mPixelsPerMeter,
                     -position.y * mPixelsPerMeter);
 }

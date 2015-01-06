@@ -31,6 +31,21 @@ RenderEntity::RenderEntity(World* world, BodyType type)
   world->addEntity(this);
 }
 
+void RenderEntity::setAngularVelocity(float angle)
+{
+  mBody->SetAngularVelocity(angle / DEGREES_PER_RADIAN);
+}
+
+void RenderEntity::setLinearVelocity(float x, float y)
+{
+  setLinearVelocity(sf::Vector2f(x, y));
+}
+
+void RenderEntity::setLinearVelocity(const sf::Vector2f& velocity)
+{
+  mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.x));
+}
+
 void RenderEntity::initializeFixture(b2Shape* shape)
 {
   b2FixtureDef fixtureDef;
