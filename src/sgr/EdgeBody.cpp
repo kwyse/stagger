@@ -2,9 +2,6 @@
 #include "sgr/EdgeBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
-#include <Box2D/Dynamics/b2Body.h>
-#include <Box2D/Dynamics/b2Fixture.h>
-#include <Box2D/Dynamics/b2World.h>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "sgr/World.hpp"
 
@@ -17,35 +14,12 @@ EdgeBody::EdgeBody(World* world,
                    const sf::Vector2f& start,
                    const sf::Vector2f& end,
                    BodyType type)
-: mBody()
-, Body(world, type)
+: Body(world, type)
 , mEdge({ sf::Vertex(start), sf::Vertex(end) })
 {
-  // TODO: Remove this after integrating with Body
-  b2BodyDef bodyDef;
-  switch(type) {
-    case BodyType::STATIC:
-      // Default type is b2_staticBody
-      break;
-    case BodyType::DYNAMIC:
-      bodyDef.type = b2_dynamicBody;
-      break;
-    case BodyType::KINEMATIC:
-      bodyDef.type = b2_kinematicBody;
-      break;
-  }
-
-  mBody = world->getB2World()->CreateBody(&bodyDef);
-  world->addBody(this);
-
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(start.x, -start.y), b2Vec2(end.x, -end.y));
-
-  b2FixtureDef fixtureDef;
-  fixtureDef.shape = &fixtureShape;
-  fixtureDef.density = 1.f;
-  fixtureDef.friction = 0.3f;
-  mBody->CreateFixture(&fixtureDef);
+  initializeFixture(&fixtureShape);
 }
 
 void EdgeBody::update()

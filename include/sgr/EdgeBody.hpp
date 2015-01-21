@@ -33,7 +33,6 @@ public:
 
 private:
   // TODO: Pimpl this
-  b2Body* mBody;
   std::array<sf::Vertex, 2> mEdge;
 };
 
