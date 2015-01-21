@@ -1,4 +1,4 @@
-// sgr/Body.hpp
+// stagger/Body.hpp
 #ifndef SGR_BODY_HPP_
 #define SGR_BODY_HPP_
 

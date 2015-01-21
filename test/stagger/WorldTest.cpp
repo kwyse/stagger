@@ -1,4 +1,4 @@
-#include "sgr/Stagger.hpp"
+#include "stagger/Stagger.hpp"
 
 #include <Box2D/Box2D.h>
 #include <catch/catch.hpp>

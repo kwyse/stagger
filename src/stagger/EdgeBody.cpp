@@ -1,9 +1,9 @@
-// sgr/EdgeBody.cpp
-#include "sgr/EdgeBody.hpp"
+// stagger/EdgeBody.cpp
+#include "stagger/EdgeBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
 #include <SFML/Graphics/RenderTarget.hpp>
-#include "sgr/World.hpp"
+#include "stagger/World.hpp"
 
 
 namespace sgr

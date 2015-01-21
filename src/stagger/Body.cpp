@@ -1,9 +1,9 @@
-// sgr/Body.cpp
-#include "sgr/Body.hpp"
+// stagger/Body.cpp
+#include "stagger/Body.hpp"
 
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
-#include "sgr/World.hpp"
+#include "stagger/World.hpp"
 
 
 namespace sgr

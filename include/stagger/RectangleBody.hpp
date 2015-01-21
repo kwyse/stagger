@@ -1,10 +1,10 @@
-// sgr/RectangleBody.hpp
+// stagger/RectangleBody.hpp
 #ifndef SGR_RECTANGLE_BODY_HPP_
 #define SGR_RECTANGLE_BODY_HPP_
 
 
 #include <memory>
-#include "sgr/Body.hpp"
+#include "stagger/Body.hpp"
 
 
 namespace sgr

@@ -1,10 +1,10 @@
-// sgr/World.cpp
-#include "sgr/World.hpp"
+// stagger/World.cpp
+#include "stagger/World.hpp"
 
 #include <vector>
 #include <Box2D/Dynamics/b2World.h>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "sgr/Body.hpp"
+#include "stagger/Body.hpp"
 
 
 const int32 VEL_ITERATIONS = 6;

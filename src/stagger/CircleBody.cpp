@@ -1,5 +1,5 @@
-// sgr/CircleBody.cpp
-#include "sgr/CircleBody.hpp"
+// stagger/CircleBody.cpp
+#include "stagger/CircleBody.hpp"
 
 #include <cmath>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>

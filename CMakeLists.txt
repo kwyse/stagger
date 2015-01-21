@@ -8,13 +8,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNINGS} -std=c++11")
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 endif()
-set(SOURCE_FILES src/sgr/World.cpp
-                 src/sgr/Body.cpp
-                 src/sgr/CircleBody.cpp
-                 src/sgr/RectangleBody.cpp
-                 src/sgr/EdgeBody.cpp
+set(SOURCE_FILES src/stagger/World.cpp
+                 src/stagger/Body.cpp
+                 src/stagger/CircleBody.cpp
+                 src/stagger/RectangleBody.cpp
+                 src/stagger/EdgeBody.cpp
                  test/catch_init.cpp
-                 test/sgr/WorldTest.cpp)
+                 test/stagger/WorldTest.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)

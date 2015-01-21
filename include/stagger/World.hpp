@@ -1,4 +1,4 @@
-// sgr/World.hpp
+// stagger/World.hpp
 #ifndef SGR_WORLD_HPP_
 #define SGR_WORLD_HPP_
 

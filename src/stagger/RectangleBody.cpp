@@ -1,5 +1,5 @@
-// sgr/RectangleEntity.cpp
-#include "sgr/RectangleBody.hpp"
+// stagger/RectangleEntity.cpp
+#include "stagger/RectangleBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
 #include <Box2D/Dynamics/b2Body.h>

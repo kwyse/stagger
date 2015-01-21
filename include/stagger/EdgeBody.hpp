@@ -1,4 +1,4 @@
-// sgr/EdgeEntity.hpp
+// stagger/EdgeEntity.hpp
 #ifndef SGR_EDGE_BODY_HPP_
 #define SGR_EDGE_BODY_HPP_
 
@@ -7,7 +7,7 @@
 #include <memory>
 #include <Box2D/Dynamics/b2Body.h>
 #include <SFML/Graphics/Drawable.hpp>
-#include "sgr/Body.hpp"
+#include "stagger/Body.hpp"
 
 
 namespace sgr

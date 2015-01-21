@@ -1,10 +1,10 @@
-// sgr/CircleBody.hpp
+// stagger/CircleBody.hpp
 #ifndef SGR_CIRCLE_BODY_HPP_
 #define SGR_CIRCLE_BODY_HPP_
 
 
 #include <memory>
-#include "sgr/Body.hpp"
+#include "stagger/Body.hpp"
 
 
 namespace sgr
