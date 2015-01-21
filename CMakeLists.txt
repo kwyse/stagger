@@ -14,7 +14,7 @@ set(SOURCE_FILES src/sgr/World.cpp
                  src/sgr/RectangleBody.cpp
                  src/sgr/EdgeBody.cpp
                  test/catch_init.cpp
-                 test/fyp/WorldTest.cpp)
+                 test/sgr/WorldTest.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)
