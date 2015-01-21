@@ -1,5 +1,5 @@
-// sgr/RenderEntity.cpp
-#include "sgr/RenderEntity.hpp"
+// sgr/Body.cpp
+#include "sgr/Body.hpp"
 
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
@@ -10,7 +10,7 @@ namespace sgr
 {
 
 
-RenderEntity::RenderEntity(World* world, BodyType type)
+Body::Body(World* world, BodyType type)
 : mBody()
 , mPixelsPerMeter(world->getPixelsPerMeter())
 {
@@ -31,7 +31,7 @@ RenderEntity::RenderEntity(World* world, BodyType type)
   world->addEntity(this);
 }
 
-void RenderEntity::update()
+void Body::update()
 {
   b2Vec2 position = mBody->GetPosition();
 
@@ -40,61 +40,61 @@ void RenderEntity::update()
                     -position.y * mPixelsPerMeter);
 }
 
-void RenderEntity::addShape(sf::Shape& shape)
+void Body::addShape(sf::Shape& shape)
 {
 
 }
 
-void RenderEntity::setPosition(float x, float y)
+void Body::setPosition(float x, float y)
 {
   setPosition(sf::Vector2f(x, y));
 }
 
-void RenderEntity::setPosition(const sf::Vector2f& position)
+void Body::setPosition(const sf::Vector2f& position)
 {
   mBody->SetTransform(b2Vec2(position.x, -position.y), mBody->GetAngle());
   Shape::setPosition(position.x * mPixelsPerMeter,
                     -position.y * mPixelsPerMeter);
 }
 
-void RenderEntity::setAngularVelocity(float angle)
+void Body::setAngularVelocity(float angle)
 {
   mBody->SetAngularVelocity(angle / DEGREES_PER_RADIAN);
 }
 
-void RenderEntity::setLinearVelocity(float x, float y)
+void Body::setLinearVelocity(float x, float y)
 {
   setLinearVelocity(sf::Vector2f(x, y));
 }
 
-void RenderEntity::setLinearVelocity(const sf::Vector2f& velocity)
+void Body::setLinearVelocity(const sf::Vector2f& velocity)
 {
   mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.x));
 }
 
-sf::Vector2f RenderEntity::getPosition() const
+sf::Vector2f Body::getPosition() const
 {
   b2Vec2 position = mBody->GetPosition();
   return sf::Vector2f(position.x, position.y);
 }
 
-float RenderEntity::getAngle() const
+float Body::getAngle() const
 {
   return mBody->GetAngle() * DEGREES_PER_RADIAN;
 }
 
-float RenderEntity::getAngularVelocity() const
+float Body::getAngularVelocity() const
 {
   return mBody->GetAngularVelocity() * DEGREES_PER_RADIAN;
 }
 
-sf::Vector2f RenderEntity::getLinearVelocity() const
+sf::Vector2f Body::getLinearVelocity() const
 {
   b2Vec2 linearVelocity = mBody->GetLinearVelocity();
   return sf::Vector2f(linearVelocity.x, linearVelocity.y);
 }
 
-void RenderEntity::initializeFixture(b2Shape* shape)
+void Body::initializeFixture(b2Shape* shape)
 {
   b2FixtureDef fixtureDef;
   fixtureDef.shape = shape;

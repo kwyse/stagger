@@ -1,6 +1,6 @@
-// sgr/RenderEntity.hpp
-#ifndef SGR_RENDER_ENTITY_HPP_
-#define SGR_RENDER_ENTITY_HPP_
+// sgr/Body.hpp
+#ifndef SGR_BODY_HPP_
+#define SGR_BODY_HPP_
 
 
 #include <memory>
@@ -25,10 +25,10 @@ enum class BodyType
   KINEMATIC
 };
 
-class RenderEntity : public sf::Shape
+class Body : public sf::Shape
 {
 public:
-  explicit RenderEntity(World* world, BodyType type = BodyType::STATIC);
+  explicit Body(World* world, BodyType type = BodyType::STATIC);
 
   void update();
 
@@ -59,4 +59,4 @@ protected:
 } // namespace sgr
 
 
-#endif // SGR_RENDER_ENTITY_HPP_
+#endif // SGR_BODY_HPP_

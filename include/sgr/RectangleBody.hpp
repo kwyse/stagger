@@ -1,22 +1,22 @@
-// sgr/RectangleEntity.hpp
-#ifndef SGR_RECTANGLE_ENTITY_HPP_
-#define SGR_RECTANGLE_ENTITY_HPP_
+// sgr/RectangleBody.hpp
+#ifndef SGR_RECTANGLE_BODY_HPP_
+#define SGR_RECTANGLE_BODY_HPP_
 
 
 #include <memory>
-#include "sgr/RenderEntity.hpp"
+#include "sgr/Body.hpp"
 
 
 namespace sgr
 {
 
 
-class RectangleEntity : public RenderEntity
+class RectangleBody : public Body
 {
 public:
-  RectangleEntity(World* world,
-                  const sf::Vector2f& size,
-                  BodyType type = BodyType::STATIC);
+  RectangleBody(World* world,
+                const sf::Vector2f& size,
+                BodyType type = BodyType::STATIC);
 
   // TODO: Needs copy constructor
   // TODO: Needs setRotation()
@@ -37,4 +37,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_RECTANGLE_ENTITY_HPP_
+#endif // SGR_RECTANGLE_BODY_HPP_

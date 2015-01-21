@@ -4,7 +4,7 @@
 #include <vector>
 #include <Box2D/Dynamics/b2World.h>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "sgr/RenderEntity.hpp"
+#include "sgr/Body.hpp"
 
 
 const int32 VEL_ITERATIONS = 6;
@@ -22,7 +22,7 @@ struct World::Impl
   , mWorld(b2Vec2(gravity.x, gravity.y))
   , mPixelsPerMeter(16)
   , mTicksPerSecond(120.f)
-  , mEntities()
+  , mBodies()
   {
     // Nothing to do
   }
@@ -31,7 +31,7 @@ struct World::Impl
   b2World mWorld; // TODO: Should this be dynamically allocated?
   int mPixelsPerMeter;
   float mTicksPerSecond;
-  std::vector<RenderEntity*> mEntities;
+  std::vector<Body*> mBodies;
 };
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
@@ -55,16 +55,16 @@ void World::update()
   mImpl->mWorld.Step(1.f / mImpl->mTicksPerSecond,
                      VEL_ITERATIONS,
                      POS_ITERATIONS);
-  for (RenderEntity* entity : mImpl->mEntities) entity->update();
+  for (Body* body : mImpl->mBodies) body->update();
 }
 
 void World::render() {
-  for (RenderEntity* entity : mImpl->mEntities) mImpl->mWindow.draw(*entity);
+  for (Body* body : mImpl->mBodies) mImpl->mWindow.draw(*body);
 }
 
-void World::addEntity(RenderEntity* entity)
+void World::addEntity(Body* body)
 {
-  mImpl->mEntities.push_back(entity);
+  mImpl->mBodies.push_back(body);
 }
 
 void World::setGravity(float x, float y)

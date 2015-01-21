@@ -1,5 +1,5 @@
-// sgr/EdgeEntity.cpp
-#include "sgr/EdgeEntity.hpp"
+// sgr/EdgeBody.cpp
+#include "sgr/EdgeBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
 #include <Box2D/Dynamics/b2Body.h>
@@ -13,15 +13,15 @@ namespace sgr
 {
 
 
-EdgeEntity::EdgeEntity(World* world,
-                       const sf::Vector2f& start,
-                       const sf::Vector2f& end,
-                       BodyType type)
+EdgeBody::EdgeBody(World* world,
+                   const sf::Vector2f& start,
+                   const sf::Vector2f& end,
+                   BodyType type)
 : mBody()
-, RenderEntity(world, type)
+, Body(world, type)
 , mEdge({ sf::Vertex(start), sf::Vertex(end) })
 {
-  // TODO: Remove this after integrating with RenderEntity
+  // TODO: Remove this after integrating with Body
   b2BodyDef bodyDef;
   switch(type) {
     case BodyType::STATIC:
@@ -48,12 +48,12 @@ EdgeEntity::EdgeEntity(World* world,
   mBody->CreateFixture(&fixtureDef);
 }
 
-void EdgeEntity::update()
+void EdgeBody::update()
 {
   // Nothing to do
 }
 
-void EdgeEntity::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void EdgeBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
   sf::Vector2f v1(mEdge[0].position.x * 16, mEdge[0].position.y * 16);
   sf::Vector2f v2(mEdge[1].position.x * 16, mEdge[1].position.y * 16);
@@ -62,12 +62,12 @@ void EdgeEntity::draw(sf::RenderTarget& target, sf::RenderStates states) const
   target.draw(edge, 2, sf::Lines, states);
 }
 
-unsigned int EdgeEntity::getPointCount() const
+unsigned int EdgeBody::getPointCount() const
 {
   return 2;
 }
 
-sf::Vector2f EdgeEntity::getPoint(unsigned int index) const
+sf::Vector2f EdgeBody::getPoint(unsigned int index) const
 {
   return sf::Vector2f(mEdge[index].position.x, mEdge[index].position.y);
 }

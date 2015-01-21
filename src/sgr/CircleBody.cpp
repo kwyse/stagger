@@ -1,5 +1,5 @@
-// sgr/CircleEntity.cpp
-#include "sgr/CircleEntity.hpp"
+// sgr/CircleBody.cpp
+#include "sgr/CircleBody.hpp"
 
 #include <cmath>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>
@@ -11,11 +11,11 @@ namespace sgr
 {
 
 
-CircleEntity::CircleEntity(World* world,
-                           float radius,
-                           BodyType type,
-                           unsigned int pointCount)
-: RenderEntity(world, type)
+CircleBody::CircleBody(World* world,
+                       float radius,
+                       BodyType type,
+                       unsigned int pointCount)
+: Body(world, type)
 , mRadius(radius)
 , mPointCount(pointCount)
 {
@@ -27,33 +27,33 @@ CircleEntity::CircleEntity(World* world,
   initializeFixture(&fixtureShape);
 }
 
-CircleEntity::CircleEntity(World* world,
-                           float radius,
-                           unsigned int pointCount,
-                           BodyType type)
-: CircleEntity(world, radius, type, pointCount)
+CircleBody::CircleBody(World* world,
+                       float radius,
+                       unsigned int pointCount,
+                       BodyType type)
+: CircleBody(world, radius, type, pointCount)
 {
   // Nothing to do
 }
 
-void CircleEntity::setRadius(float radius)
+void CircleBody::setRadius(float radius)
 {
   mRadius = radius;
   mBody->GetFixtureList()->GetShape()->m_radius = radius;
   Shape::update();
 }
 
-float CircleEntity::getRadius() const
+float CircleBody::getRadius() const
 {
   return mRadius;
 }
 
-unsigned int CircleEntity::getPointCount() const
+unsigned int CircleBody::getPointCount() const
 {
   return mPointCount;
 }
 
-sf::Vector2f CircleEntity::getPoint(unsigned int index) const
+sf::Vector2f CircleBody::getPoint(unsigned int index) const
 {
   static const float pi = 3.141592654f;
   float pixelRadius = mRadius * mPixelsPerMeter;

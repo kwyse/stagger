@@ -15,7 +15,7 @@ namespace sgr
 {
 
 
-class RenderEntity;
+class Body;
 
 
 class World
@@ -31,8 +31,8 @@ public:
   void update();
   void render();
 
-  void addEntity(RenderEntity* entity);
-//  void removeEnity(RenderEntity* entity);
+  void addEntity(Body* body);
+//  void removeEnity(Body* body);
 
   void setGravity(float x, float y);
   void setGravity(const sf::Vector2f& gravity);

@@ -1,5 +1,5 @@
 // sgr/RectangleEntity.cpp
-#include "sgr/RectangleEntity.hpp"
+#include "sgr/RectangleBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
 #include <Box2D/Dynamics/b2Body.h>
@@ -10,10 +10,10 @@ namespace sgr
 {
 
 
-RectangleEntity::RectangleEntity(World* world,
-                                 const sf::Vector2f& size,
-                                 BodyType type)
-: RenderEntity(world, type)
+RectangleBody::RectangleBody(World* world,
+                             const sf::Vector2f& size,
+                             BodyType type)
+: Body(world, type)
 , mSize(size)
 {
   Shape::setOrigin((mSize.x / 2) * mPixelsPerMeter,
@@ -25,12 +25,12 @@ RectangleEntity::RectangleEntity(World* world,
   initializeFixture(&fixtureShape);
 }
 
-void RectangleEntity::setSize(float width, float height)
+void RectangleBody::setSize(float width, float height)
 {
   setSize(sf::Vector2f(width, height));
 }
 
-void RectangleEntity::setSize(const sf::Vector2f& size)
+void RectangleBody::setSize(const sf::Vector2f& size)
 {
   mSize = size;
 
@@ -42,17 +42,17 @@ void RectangleEntity::setSize(const sf::Vector2f& size)
   Shape::update();
 }
 
-const sf::Vector2f& RectangleEntity::getSize() const
+const sf::Vector2f& RectangleBody::getSize() const
 {
   return mSize;
 }
 
-unsigned int RectangleEntity::getPointCount() const
+unsigned int RectangleBody::getPointCount() const
 {
   return 4;
 }
 
-sf::Vector2f RectangleEntity::getPoint(unsigned int index) const
+sf::Vector2f RectangleBody::getPoint(unsigned int index) const
 {
   switch (index) {
     default:

@@ -1,13 +1,13 @@
 // sgr/EdgeEntity.hpp
-#ifndef SGR_EDGE_ENTITY_HPP_
-#define SGR_EDGE_ENTITY_HPP_
+#ifndef SGR_EDGE_BODY_HPP_
+#define SGR_EDGE_BODY_HPP_
 
 
 #include <array>
 #include <memory>
 #include <Box2D/Dynamics/b2Body.h>
 #include <SFML/Graphics/Drawable.hpp>
-#include "sgr/RenderEntity.hpp"
+#include "sgr/Body.hpp"
 
 
 namespace sgr
@@ -17,13 +17,13 @@ namespace sgr
 class World;
 
 
-class EdgeEntity : public RenderEntity
+class EdgeBody : public Body
 {
 public:
-  EdgeEntity(World* world,
-             const sf::Vector2f& start,
-             const sf::Vector2f& end,
-             BodyType type = BodyType::STATIC);
+  EdgeBody(World* world,
+           const sf::Vector2f& start,
+           const sf::Vector2f& end,
+           BodyType type = BodyType::STATIC);
 
   void update();
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -41,4 +41,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_EDGE_ENTITY_HPP_
+#endif // SGR_EDGE_BODY_HPP_
