@@ -28,7 +28,7 @@ Body::Body(World* world, BodyType type)
   }
 
   mBody = world->getB2World()->CreateBody(&bodyDef);
-  world->addEntity(this);
+  world->addBody(this);
 }
 
 void Body::update()

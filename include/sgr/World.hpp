@@ -31,16 +31,17 @@ public:
   void update();
   void render();
 
-  void addEntity(Body* body);
-//  void removeEnity(Body* body);
+  void addBody(Body* body);
+//  void removeBody(Body* body);
 
   void setGravity(float x, float y);
   void setGravity(const sf::Vector2f& gravity);
   void setPixelsPerMeter(int pixelsPerMeter);
-  void setTicksPerSecond(float ticksPerSecond);
+  void setTicksPerSecond(float ticksPerSecond); // TODO: Should this be an int?
 
   const sf::Vector2f getGravity() const;
   int getPixelsPerMeter() const;
+  float getTicksPerSecond() const;
   b2World* getB2World() const;
 
 private:

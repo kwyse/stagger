@@ -36,7 +36,7 @@ EdgeBody::EdgeBody(World* world,
   }
 
   mBody = world->getB2World()->CreateBody(&bodyDef);
-  world->addEntity(this);
+  world->addBody(this);
 
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(start.x, -start.y), b2Vec2(end.x, -end.y));

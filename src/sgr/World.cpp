@@ -62,7 +62,7 @@ void World::render() {
   for (Body* body : mImpl->mBodies) mImpl->mWindow.draw(*body);
 }
 
-void World::addEntity(Body* body)
+void World::addBody(Body* body)
 {
   mImpl->mBodies.push_back(body);
 }
@@ -96,6 +96,11 @@ const sf::Vector2f World::getGravity() const
 int World::getPixelsPerMeter() const
 {
   return mImpl->mPixelsPerMeter;
+}
+
+float World::getTicksPerSecond() const
+{
+  return mImpl->mTicksPerSecond;
 }
 
 b2World* World::getB2World() const
