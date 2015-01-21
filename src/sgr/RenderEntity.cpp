@@ -40,6 +40,11 @@ void RenderEntity::update()
                     -position.y * mPixelsPerMeter);
 }
 
+void RenderEntity::addShape(sf::Shape& shape)
+{
+
+}
+
 void RenderEntity::setPosition(float x, float y)
 {
   setPosition(sf::Vector2f(x, y));

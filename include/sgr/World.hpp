@@ -32,6 +32,7 @@ public:
   void render();
 
   void addEntity(RenderEntity* entity);
+//  void removeEnity(RenderEntity* entity);
 
   void setGravity(float x, float y);
   void setGravity(const sf::Vector2f& gravity);
