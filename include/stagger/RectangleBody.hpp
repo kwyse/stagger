@@ -1,6 +1,6 @@
 // stagger/RectangleBody.hpp
-#ifndef SGR_RECTANGLE_BODY_HPP_
-#define SGR_RECTANGLE_BODY_HPP_
+#ifndef STAGGER_RECTANGLE_BODY_HPP_
+#define STAGGER_RECTANGLE_BODY_HPP_
 
 
 #include <memory>
@@ -37,4 +37,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_RECTANGLE_BODY_HPP_
+#endif // STAGGER_RECTANGLE_BODY_HPP_

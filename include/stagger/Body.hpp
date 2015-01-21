@@ -1,6 +1,6 @@
 // stagger/Body.hpp
-#ifndef SGR_BODY_HPP_
-#define SGR_BODY_HPP_
+#ifndef STAGGER_BODY_HPP_
+#define STAGGER_BODY_HPP_
 
 
 #include <memory>
@@ -59,4 +59,4 @@ protected:
 } // namespace sgr
 
 
-#endif // SGR_BODY_HPP_
+#endif // STAGGER_BODY_HPP_

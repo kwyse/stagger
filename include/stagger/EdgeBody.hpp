@@ -1,6 +1,6 @@
 // stagger/EdgeEntity.hpp
-#ifndef SGR_EDGE_BODY_HPP_
-#define SGR_EDGE_BODY_HPP_
+#ifndef STAGGER_EDGE_BODY_HPP_
+#define STAGGER_EDGE_BODY_HPP_
 
 
 #include <array>
@@ -40,4 +40,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_EDGE_BODY_HPP_
+#endif // STAGGER_EDGE_BODY_HPP_

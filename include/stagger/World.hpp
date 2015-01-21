@@ -1,6 +1,6 @@
 // stagger/World.hpp
-#ifndef SGR_WORLD_HPP_
-#define SGR_WORLD_HPP_
+#ifndef STAGGER_WORLD_HPP_
+#define STAGGER_WORLD_HPP_
 
 
 #include <memory>
@@ -53,4 +53,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_WORLD_HPP_
+#endif // STAGGER_WORLD_HPP_

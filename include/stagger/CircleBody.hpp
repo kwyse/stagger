@@ -1,6 +1,6 @@
 // stagger/CircleBody.hpp
-#ifndef SGR_CIRCLE_BODY_HPP_
-#define SGR_CIRCLE_BODY_HPP_
+#ifndef STAGGER_CIRCLE_BODY_HPP_
+#define STAGGER_CIRCLE_BODY_HPP_
 
 
 #include <memory>
@@ -42,4 +42,4 @@ private:
 } // namespace sgr
 
 
-#endif // SGR_CIRCLE_BODY_HPP_
+#endif // STAGGER_CIRCLE_BODY_HPP_
