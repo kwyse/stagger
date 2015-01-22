@@ -23,11 +23,6 @@ EdgeBody::EdgeBody(World* world,
   initializeFixture(&fixtureShape);
 }
 
-void EdgeBody::update()
-{
-  // Nothing to do
-}
-
 void EdgeBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
   sf::Vector2f v1(mEdge[0].position.x * 16, mEdge[0].position.y * 16);
