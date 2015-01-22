@@ -1,5 +1,5 @@
 // stagger/CircleBody.cpp
-// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
+// Copyright (c) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #include "stagger/CircleBody.hpp"
 
 #include <cmath>

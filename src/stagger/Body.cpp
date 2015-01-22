@@ -1,5 +1,5 @@
 // stagger/Body.cpp
-// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
+// Copyright (c) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #include "stagger/Body.hpp"
 
 #include <Box2D/Dynamics/b2Fixture.h>
