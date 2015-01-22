@@ -1,5 +1,9 @@
 # Stagger - A Box2D wrapper for SFML
 
+## WARNING
+
+Stagger is in heavy development and interface changes are likely!
+
 ## Depenencies
 
 Stagger requires both [SFML](http://www.sfml-dev.org/) and
