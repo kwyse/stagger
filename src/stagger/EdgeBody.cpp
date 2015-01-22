@@ -1,4 +1,5 @@
 // stagger/EdgeBody.cpp
+// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #include "stagger/EdgeBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
@@ -20,11 +21,6 @@ EdgeBody::EdgeBody(World* world,
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(start.x, -start.y), b2Vec2(end.x, -end.y));
   initializeFixture(&fixtureShape);
-}
-
-void EdgeBody::update()
-{
-  // Nothing to do
 }
 
 void EdgeBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
