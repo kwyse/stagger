@@ -1,4 +1,5 @@
 // stagger/CircleBody.hpp
+// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #ifndef STAGGER_CIRCLE_BODY_HPP_
 #define STAGGER_CIRCLE_BODY_HPP_
 

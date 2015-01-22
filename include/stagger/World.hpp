@@ -1,4 +1,5 @@
 // stagger/World.hpp
+// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #ifndef STAGGER_WORLD_HPP_
 #define STAGGER_WORLD_HPP_
 

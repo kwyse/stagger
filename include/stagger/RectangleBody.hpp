@@ -1,4 +1,5 @@
 // stagger/RectangleBody.hpp
+// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #ifndef STAGGER_RECTANGLE_BODY_HPP_
 #define STAGGER_RECTANGLE_BODY_HPP_
 

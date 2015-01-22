@@ -1,4 +1,5 @@
 // stagger/EdgeBody.cpp
+// Copyright (C) 2014-2015 Krishan Wyse (kwysek@gmail.com)
 #include "stagger/EdgeBody.hpp"
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
