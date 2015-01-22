@@ -11,19 +11,23 @@
 class b2Body;
 class b2Shape;
 
-
+///
+/// \brief Namespace for Stagger
+///
 namespace sgr
 {
 
 
 class World;
 
-
+///
+/// \brief Enumeration for the three types of simulated bodies
+///
 enum class BodyType
 {
-  STATIC,
-  DYNAMIC,
-  KINEMATIC
+  STATIC, ///< Bodies that do not move and ignore forces applied to them
+  DYNAMIC, ///< Bodies that move and react to applied forces
+  KINEMATIC ///< Bodies that can move, but do not react to applied forces
 };
 
 ///
@@ -161,3 +165,14 @@ protected:
 
 
 #endif // STAGGER_BODY_HPP_
+
+
+///
+/// \class sgr::Body
+///
+/// This class inherits the methods from sf::Shape, so its subclasses can be
+/// manipulated just like the subclasses of sf::Shape. New methods follow the
+/// naming conventions of these classes.
+///
+/// \see sgr::CircleBody, sgr::RectangleBody, sgr::EdgeBody
+///
