@@ -52,6 +52,11 @@ public:
   ///
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+  void setStartVertex(float x, float y);
+  void setStartVertex(const sf::Vector2f& vertex);
+  void setEndVertex(float x, float y);
+  void setEndVertex(const sf::Vector2f& vertex);
+
   ///
   /// \brief Get the point count of the rectangular body
   ///
