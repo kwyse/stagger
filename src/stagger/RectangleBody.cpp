@@ -35,10 +35,9 @@ void RectangleBody::setSize(const sf::Vector2f& size)
 {
   mSize = size;
 
-  mBody->DestroyFixture(mBody->GetFixtureList());
   b2PolygonShape fixtureShape;
   fixtureShape.SetAsBox(size.x / 2, size.y / 2);
-  initializeFixture(&fixtureShape);
+  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
 
   Shape::update();
 }

@@ -41,7 +41,7 @@ void Body::update()
                     -position.y * mPixelsPerMeter);
 }
 
-void Body::addShape(sf::Shape& shape)
+void Body::addShape(sf::Shape&)
 {
 
 }
