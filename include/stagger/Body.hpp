@@ -9,6 +9,7 @@
 
 
 class b2Body;
+class b2Fixture;
 class b2Shape;
 
 ///
@@ -153,6 +154,17 @@ protected:
   /// \param shape The b2Shape subclass object to be used as the fixture
   ///
   void initializeFixture(b2Shape* shape);
+
+  ///
+  /// \brief Change the shape of a fixture
+  ///
+  /// This method maintains the old values for density, friction and
+  /// restitution.
+  ///
+  /// \param fixture The old b2Fixture
+  /// \param shape The new b2Shape
+  ///
+  void reinitializeFixture(b2Fixture* fixture, b2Shape* shape);
 
   static constexpr float DEGREES_PER_RADIAN = 57.2957795f;
 

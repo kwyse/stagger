@@ -41,11 +41,10 @@ void EdgeBody::setStartVertex(const sf::Vector2f& vertex)
 {
   mEdge[0] = sf::Vertex(vertex);
 
-  mBody->DestroyFixture(mBody->GetFixtureList());
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
                    b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
-  initializeFixture(&fixtureShape);
+  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
 }
 
 void EdgeBody::setEndVertex(float x, float y)
@@ -57,11 +56,10 @@ void EdgeBody::setEndVertex(const sf::Vector2f& vertex)
 {
   mEdge[1] = sf::Vertex(vertex);
 
-  mBody->DestroyFixture(mBody->GetFixtureList());
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
                    b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
-  initializeFixture(&fixtureShape);
+  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
 }
 
 unsigned int EdgeBody::getPointCount() const

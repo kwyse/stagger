@@ -101,6 +101,22 @@ void Body::initializeFixture(b2Shape* shape)
   fixtureDef.shape = shape;
   fixtureDef.density = 1.f;
   fixtureDef.friction = 0.3f;
+  fixtureDef.restitution = 0.f;
+  mBody->CreateFixture(&fixtureDef);
+}
+
+void Body::reinitializeFixture(b2Fixture* fixture, b2Shape* shape)
+{
+  float density = fixture->GetDensity();
+  float friction = fixture->GetFriction();
+  float restitution = fixture->GetRestitution();
+
+  mBody->DestroyFixture(fixture);
+  b2FixtureDef fixtureDef;
+  fixtureDef.shape = shape;
+  fixtureDef.density = density;
+  fixtureDef.friction = friction;
+  fixtureDef.restitution = restitution;
   mBody->CreateFixture(&fixtureDef);
 }
 
