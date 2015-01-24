@@ -16,7 +16,8 @@ set(SOURCE_FILES src/stagger/World.cpp
                  test/catch_init.cpp
                  test/stagger/WorldTest.cpp
                  test/stagger/CircleBodyTest.cpp
-                 test/stagger/RectangleBodyTest.cpp)
+                 test/stagger/RectangleBodyTest.cpp
+                 test/stagger/EdgeBodyTest.cpp)
 
 # Change to reflect location of SFML libaries and header files
 set(SFML_DIR /usr/local/Cellar/sfml/2.1)
