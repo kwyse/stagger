@@ -52,10 +52,61 @@ public:
   ///
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+  ///
+  /// \brief Set the start vertex for the edge
+  ///
+  /// \param x The x-coordinate for the vertex
+  /// \param y The y-coordinate for the vertex
+  ///
+  /// \see getStartVertex
+  ///
   void setStartVertex(float x, float y);
+
+  ///
+  /// \brief Set the start vertex for the edge
+  ///
+  /// \param vertex The coordinates for the vertex
+  ///
+  /// \see getStartVertex
+  ///
   void setStartVertex(const sf::Vector2f& vertex);
+
+  ///
+  /// \brief Set the end vertex for the edge
+  ///
+  /// \param x The x-coordinate for the vertex
+  /// \param y The y-coordinate for the vertex
+  ///
+  /// \see getEndVertex
+  ///
   void setEndVertex(float x, float y);
+
+  ///
+  /// \brief Set the end vertex for the edge
+  ///
+  /// \param vertex The coordinates for the vertex
+  ///
+  /// \see getEndVertex
+  ///
   void setEndVertex(const sf::Vector2f& vertex);
+
+  ///
+  /// \brief Get the start vertex for the edge
+  ///
+  /// \return The start vertex
+  ///
+  /// \see setStartVertex
+  ///
+  sf::Vector2f getStartVertex() const;
+
+  ///
+  /// \brief Get the end vertex for the edge
+  ///
+  /// \return the end vertex
+  ///
+  /// \see setEndVertex
+  ///
+  sf::Vector2f getEndVertex() const;
 
   ///
   /// \brief Get the point count of the rectangular body
@@ -75,6 +126,12 @@ public:
 
 private:
   // TODO: Pimpl this
+
+  ///
+  /// \brief Sets the vertices of the edge
+  ///
+  void setEdgeVertices();
+
   std::array<sf::Vertex, 2> mEdge; ///< The coordinates of the edge
 };
 

@@ -40,11 +40,7 @@ void EdgeBody::setStartVertex(float x, float y)
 void EdgeBody::setStartVertex(const sf::Vector2f& vertex)
 {
   mEdge[0] = sf::Vertex(vertex);
-
-  b2EdgeShape fixtureShape;
-  fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
-                   b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
-  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
+  setEdgeVertices();
 }
 
 void EdgeBody::setEndVertex(float x, float y)
@@ -55,11 +51,17 @@ void EdgeBody::setEndVertex(float x, float y)
 void EdgeBody::setEndVertex(const sf::Vector2f& vertex)
 {
   mEdge[1] = sf::Vertex(vertex);
+  setEdgeVertices();
+}
 
-  b2EdgeShape fixtureShape;
-  fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
-                   b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
-  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
+sf::Vector2f EdgeBody::getStartVertex() const
+{
+  return sf::Vector2f(mEdge[0].position.x, mEdge[0].position.y);
+}
+
+sf::Vector2f EdgeBody::getEndVertex() const
+{
+  return sf::Vector2f(mEdge[1].position.x, mEdge[1].position.y);
 }
 
 unsigned int EdgeBody::getPointCount() const
@@ -70,6 +72,14 @@ unsigned int EdgeBody::getPointCount() const
 sf::Vector2f EdgeBody::getPoint(unsigned int index) const
 {
   return sf::Vector2f(mEdge[index].position.x, mEdge[index].position.y);
+}
+
+void EdgeBody::setEdgeVertices()
+{
+  b2EdgeShape fixtureShape;
+  fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
+                   b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
+  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
 }
 
 
