@@ -41,7 +41,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
 }
 
 SCENARIO("EdgeBody parameters are changed", "[edgeBody]") {
-  GIVEN("An initialized Edge object") {
+  GIVEN("An initialized EdgeBody object") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
     sf::Vector2f start(0.f, -10.f);

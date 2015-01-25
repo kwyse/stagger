@@ -70,13 +70,13 @@ void Body::setLinearVelocity(float x, float y)
 
 void Body::setLinearVelocity(const sf::Vector2f& velocity)
 {
-  mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.x));
+  mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y));
 }
 
 sf::Vector2f Body::getPosition() const
 {
   b2Vec2 position = mBody->GetPosition();
-  return sf::Vector2f(position.x, position.y);
+  return sf::Vector2f(position.x, -position.y);
 }
 
 float Body::getAngle() const

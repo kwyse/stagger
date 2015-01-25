@@ -15,6 +15,7 @@ set(SOURCE_FILES src/stagger/World.cpp
                  src/stagger/EdgeBody.cpp
                  test/catch_init.cpp
                  test/stagger/WorldTest.cpp
+                 test/stagger/BodyTest.cpp
                  test/stagger/CircleBodyTest.cpp
                  test/stagger/RectangleBodyTest.cpp
                  test/stagger/EdgeBodyTest.cpp)
