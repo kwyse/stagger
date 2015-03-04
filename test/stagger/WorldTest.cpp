@@ -77,6 +77,22 @@ SCENARIO("World parameters are changed", "[world]") {
         REQUIRE(world.getTicksPerSecond() == 60.f);
       }
     }
+
+    WHEN("The rendered edges toggle is set to true") {
+      bool result = world.enableEdgeRendering(true);
+
+      THEN("The rendered edges toggle is updated") {
+        REQUIRE(result);
+      }
+    }
+
+    WHEN("The rendered edges toggle is set to false") {
+      bool result = world.enableEdgeRendering(false);
+
+      THEN("The rendered edges toggle is updated") {
+        REQUIRE_FALSE(result);
+      }
+    }
   }
 }
 
