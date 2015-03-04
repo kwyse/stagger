@@ -41,11 +41,6 @@ void Body::update()
                     -position.y * mPixelsPerMeter);
 }
 
-void Body::addShape(sf::Shape&)
-{
-
-}
-
 void Body::setPosition(float x, float y)
 {
   setPosition(sf::Vector2f(x, y));
@@ -71,6 +66,16 @@ void Body::setLinearVelocity(float x, float y)
 void Body::setLinearVelocity(const sf::Vector2f& velocity)
 {
   mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y));
+}
+
+void Body::applyForceToCenter(float x, float y)
+{
+  applyForceToCenter(sf::Vector2f(x, y));
+}
+
+void Body::applyForceToCenter(const sf::Vector2f& force)
+{
+  mBody->ApplyForceToCenter(b2Vec2(force.x, force.y), true);
 }
 
 sf::Vector2f Body::getPosition() const
@@ -101,7 +106,7 @@ void Body::initializeFixture(b2Shape* shape)
   fixtureDef.shape = shape;
   fixtureDef.density = 1.f;
   fixtureDef.friction = 0.3f;
-  fixtureDef.restitution = 0.f;
+  fixtureDef.restitution = 0.3f;
   mBody->CreateFixture(&fixtureDef);
 }
 

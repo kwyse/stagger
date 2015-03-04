@@ -57,8 +57,6 @@ public:
   ///
   void update();
 
-  void addShape(sf::Shape& shape);
-
   ///
   /// \brief Set the position of the body
   ///
@@ -111,6 +109,9 @@ public:
   /// \see getLinearVelocity
   ///
   void setLinearVelocity(const sf::Vector2f& velocity);
+
+  void applyForceToCenter(float x, float y);
+  void applyForceToCenter(const sf::Vector2f& force);
 
   ///
   /// \brief Get the position of the body, in meters from the top left corner
