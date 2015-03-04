@@ -10,7 +10,31 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
 
-    WHEN("The EdgeBody constructor is called without a BodyType") {
+    WHEN("The EdgeBody constructor is called without vertices or a BodyType") {
+      sgr::EdgeBody edge(&world);
+
+      THEN("Then all parameters are initialized") {
+        REQUIRE(edge.getPointCount() == 2);
+        REQUIRE(edge.getStartVertex().x == 0.f);
+        REQUIRE(edge.getStartVertex().y == 0.f);
+        REQUIRE(edge.getEndVertex().x == 0.f);
+        REQUIRE(edge.getEndVertex().y == 0.f);
+      }
+    }
+
+    WHEN("The EdgeBody constructor is called without vertices but with a BodyType") {
+      sgr::EdgeBody edge(&world, sgr::BodyType::STATIC);
+
+      THEN("Then all parameters are initialized") {
+        REQUIRE(edge.getPointCount() == 2);
+        REQUIRE(edge.getStartVertex().x == 0.f);
+        REQUIRE(edge.getStartVertex().y == 0.f);
+        REQUIRE(edge.getEndVertex().x == 0.f);
+        REQUIRE(edge.getEndVertex().y == 0.f);
+      }
+    }
+
+    WHEN("The EdgeBody constructor is called with vertices but without a BodyType") {
       sf::Vector2f start(5.f, 10.f);
       sf::Vector2f end(20.f, 15.f);
       sgr::EdgeBody edge(&world, start, end);
@@ -24,7 +48,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
       }
     }
 
-    WHEN("The EdgeBody constructor is called with a BodyType") {
+    WHEN("The EdgeBody constructor is called with vertices and a BodyType") {
       sf::Vector2f start(15.f, 5.f);
       sf::Vector2f end(2.f, 35.f);
       sgr::EdgeBody edge(&world, start, end, sgr::BodyType::STATIC);
