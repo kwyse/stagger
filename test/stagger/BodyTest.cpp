@@ -87,5 +87,77 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
         REQUIRE(body.getLinearVelocity().y == 25.f);
       }
     }
+
+    WHEN("The friction is set using a valid value") {
+      body.setFriction(0.88f);
+
+      THEN("The friction value is updated") {
+        REQUIRE(body.getFriction() == 0.88f);
+      }
+    }
+
+    WHEN("The friction is set using an edge value") {
+      body.setFriction(0.f);
+
+      THEN("The friction value is updated") {
+        REQUIRE(body.getFriction() == 0.f);
+      }
+    }
+
+    WHEN("The friction is set using an out-of-bounds value that is too low") {
+      body.setFriction(-0.1f);
+
+      THEN("The friction value is set to 0") {
+        REQUIRE(body.getFriction() == 0.f);
+      }
+    }
+
+    WHEN("The friction is set using an out-of-bounds value that is too high") {
+      body.setFriction(1.03f);
+
+      THEN("The friction value is set to 1") {
+        REQUIRE(body.getFriction() == 1.f);
+      }
+    }
+
+    WHEN("The density is set") {
+      body.setDensity(7.77f);
+
+      THEN("The density value is updated") {
+        REQUIRE(body.getDensity() == 7.77f);
+      }
+    }
+
+    WHEN("The restitution is set using a valid value") {
+      body.setRestitution(0.32f);
+
+      THEN("The restitution value is updated") {
+        REQUIRE(body.getRestitution() == 0.32f);
+      }
+    }
+
+    WHEN("The restitution is set using an edge value") {
+      body.setRestitution(1.f);
+
+      THEN("The restitution value is updated") {
+        REQUIRE(body.getRestitution() == 1.f);
+      }
+    }
+
+    WHEN("The restitution is set using an out-of-bounds value that is too low") {
+      body.setRestitution(-0.05f);
+
+      THEN("The restitution value is set to 0") {
+        REQUIRE(body.getRestitution() == 0.f);
+      }
+    }
+
+    WHEN("The restitution is set using an out-of-bounds value that is too high") {
+      body.setRestitution(1.1f);
+
+      THEN("The restitution value is set to 1") {
+        REQUIRE(body.getRestitution() == 1.f);
+      }
+    }
   }
 }
