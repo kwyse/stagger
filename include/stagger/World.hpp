@@ -20,6 +20,7 @@ namespace sgr
 
 
 class Body;
+class EdgeBody;
 
 
 ///
@@ -48,8 +49,6 @@ public:
   ///
   ~World();
 
-  void processInput();
-
   ///
   /// \brief Step through the simulation and update the bodies
   ///
@@ -60,7 +59,6 @@ public:
   ///
   void render();
 
-
   ///
   /// \brief Add a body to the world
   ///
@@ -68,7 +66,12 @@ public:
   ///
   void addBody(Body* body);
 
-//  void removeBody(Body* body);
+  ///
+  /// \brief Add an EdgeBody to the world
+  ///
+  /// \param body An EdgeBody object to undergo simulation
+  ///
+  void addBody(EdgeBody* body);
 
   ///
   /// \brief Set the gravity vector for the world
@@ -136,6 +139,14 @@ public:
   /// \return The underlying b2World object
   ///
   b2World* getB2World() const;
+
+  ///
+  /// \brief Toggle the rendering of EdgeBodies
+  ///
+  /// \return The new toggle value
+  /// \param flag Toggle value
+  ///
+  bool enableEdgeRendering(bool flag);
 
 private:
   struct Impl;

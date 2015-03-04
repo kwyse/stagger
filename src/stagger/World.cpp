@@ -6,6 +6,7 @@
 #include <Box2D/Dynamics/b2World.h>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "stagger/Body.hpp"
+#include "stagger/EdgeBody.hpp"
 
 
 const int32 VEL_ITERATIONS = 6;
@@ -24,6 +25,8 @@ struct World::Impl
   , mPixelsPerMeter(16)
   , mTicksPerSecond(120.f)
   , mBodies()
+  , mEdges()
+  , bRenderEdges(false)
   {
     // Nothing to do
   }
@@ -33,6 +36,8 @@ struct World::Impl
   int mPixelsPerMeter;
   float mTicksPerSecond;
   std::vector<Body*> mBodies;
+  std::vector<EdgeBody*> mEdges;
+  bool bRenderEdges;
 };
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
@@ -46,11 +51,6 @@ World::~World()
   // Nothing to do
 }
 
-void World::processInput()
-{
-  // Nothing to do
-}
-
 void World::update()
 {
   mImpl->mWorld.Step(1.f / mImpl->mTicksPerSecond,
@@ -60,12 +60,21 @@ void World::update()
 }
 
 void World::render() {
-  for (Body* body : mImpl->mBodies) mImpl->mWindow.draw(*body);
+  for (Body* body : mImpl->mBodies) {
+    EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
+    if (edgeBody && !(mImpl->bRenderEdges)) continue;
+    mImpl->mWindow.draw(*body);
+  }
 }
 
 void World::addBody(Body* body)
 {
   mImpl->mBodies.push_back(body);
+}
+
+void World::addBody(EdgeBody* body)
+{
+  mImpl->mEdges.push_back(body);
 }
 
 void World::setGravity(float x, float y)
@@ -107,6 +116,12 @@ float World::getTicksPerSecond() const
 b2World* World::getB2World() const
 {
   return &mImpl->mWorld;
+}
+
+bool World::enableEdgeRendering(bool flag)
+{
+  mImpl->bRenderEdges = flag;
+  return mImpl->bRenderEdges;
 }
 
 
