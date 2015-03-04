@@ -100,6 +100,41 @@ sf::Vector2f Body::getLinearVelocity() const
   return sf::Vector2f(linearVelocity.x, linearVelocity.y);
 }
 
+void Body::setFriction(float friction)
+{
+  if (friction > 1.f) friction = 1.f;
+  if (friction < 0.f) friction = 0.f;
+  mBody->GetFixtureList()->SetFriction(friction);
+}
+
+void Body::setDensity(float density)
+{
+  mBody->GetFixtureList()->SetDensity(density);
+  mBody->ResetMassData();
+}
+
+void Body::setRestitution(float restitution)
+{
+  if (restitution > 1.f) restitution = 1.f;
+  if (restitution < 0.f) restitution = 0.f;
+  mBody->GetFixtureList()->SetRestitution(restitution);
+}
+
+float Body::getFriction() const
+{
+  return mBody->GetFixtureList()->GetFriction();
+}
+
+float Body::getDensity() const
+{
+  return mBody->GetFixtureList()->GetDensity();
+}
+
+float Body::getRestitution() const
+{
+  return mBody->GetFixtureList()->GetRestitution();
+}
+
 void Body::initializeFixture(b2Shape* shape)
 {
   b2FixtureDef fixtureDef;

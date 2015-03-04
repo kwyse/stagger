@@ -110,7 +110,46 @@ public:
   ///
   void setLinearVelocity(const sf::Vector2f& velocity);
 
+  ///
+  /// \brief Set the friction of the body, a value between 0 and 1
+  ///
+  /// \param friction The new friction
+  ///
+  /// \see getFriction
+  ///
+  void setFriction(float friction);
+
+  ///
+  /// \brief Set the density of the body
+  ///
+  /// \param density The new density
+  ///
+  /// \see getDensity
+  ///
+  void setDensity(float density);
+
+  ///
+  /// \brief Set the restitution of the body, a value between 0 and 1
+  ///
+  /// \param restitution The new restitution
+  ///
+  /// \see getRestitution
+  ///
+  void setRestitution(float restitution);
+
+  ///
+  /// \brief Apply a force to the center of the body
+  ///
+  /// \param x The horizontal component of the force
+  /// \param y The vertical component of the force
+  ///
   void applyForceToCenter(float x, float y);
+
+  ///
+  /// \brief Apply a force to the center of the body
+  ///
+  /// \param force The force to be applied
+  ///
   void applyForceToCenter(const sf::Vector2f& force);
 
   ///
@@ -146,6 +185,33 @@ public:
   /// \see setLinearVelocity
   ///
   sf::Vector2f getLinearVelocity() const;
+
+  ///
+  /// \brief Get the friction of the body
+  ///
+  /// \return The friction of the body
+  ///
+  /// \see setFriction
+  ///
+  float getFriction() const;
+
+  ///
+  /// \brief Get the density of the body
+  ///
+  /// \return The density of the body
+  ///
+  /// \see setDensity
+  ///
+  float getDensity() const;
+
+  ///
+  /// \brief Get the restitution of the body
+  ///
+  /// \return The restitution of the body
+  ///
+  /// \see setRestitution
+  ///
+  float getRestitution() const;
 
 protected:
 
