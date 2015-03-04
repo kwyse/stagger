@@ -11,6 +11,14 @@ namespace sgr
 {
 
 
+EdgeBody::EdgeBody(World* world, BodyType type)
+: Body(world, type)
+, mEdge({ sf::Vertex(), sf::Vertex() })
+{
+  b2EdgeShape fixtureShape;
+  initializeFixture(&fixtureShape);
+}
+
 EdgeBody::EdgeBody(World* world,
                    const sf::Vector2f& start,
                    const sf::Vector2f& end,
@@ -25,8 +33,8 @@ EdgeBody::EdgeBody(World* world,
 
 void EdgeBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-  sf::Vector2f v1(mEdge[0].position.x * 16, mEdge[0].position.y * 16);
-  sf::Vector2f v2(mEdge[1].position.x * 16, mEdge[1].position.y * 16);
+  sf::Vector2f v1(mEdge[0].position.x * mPixelsPerMeter, mEdge[0].position.y * mPixelsPerMeter);
+  sf::Vector2f v2(mEdge[1].position.x * mPixelsPerMeter, mEdge[1].position.y * mPixelsPerMeter);
 
   sf::Vertex edge[] = { sf::Vertex(v1), sf::Vertex(v2) };
   target.draw(edge, 2, sf::Lines, states);

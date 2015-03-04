@@ -31,6 +31,14 @@ public:
   /// \brief Construct a new edge body
   ///
   /// \param world The sgr::World container for the body
+  /// \param type The sgr::BodyType (static, dynamic or kinematic)
+  ///
+  EdgeBody(World* world, BodyType type = BodyType::STATIC);
+
+  ///
+  /// \brief Construct a new edge body
+  ///
+  /// \param world The sgr::World container for the body
   /// \param start The starting coordinates of the edge, in meters
   /// \param end The ending coordinates of the edge, in meters
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
