@@ -105,7 +105,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
     sgr::World world(window, gravity);
 
     WHEN("A static CircleBody object is added") {
-      sgr::CircleBody circle(&world, 1.f, sgr::BodyType::STATIC);
+      sgr::CircleBody circle(world, 1.f, sgr::BodyType::STATIC);
 
       THEN("The static CircleBody object is not acted upon by forces") {
         sf::Vector2f startPosition = circle.getPosition();
@@ -115,7 +115,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
     }
 
     WHEN("A dynamic CircleBody object is added") {
-      sgr::CircleBody circle(&world, 1.f, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody circle(world, 1.f, sgr::BodyType::DYNAMIC);
 
       THEN("The dynamic CircleBody object is acted upon by forces") {
         sf::Vector2f startPosition = circle.getPosition();
@@ -125,7 +125,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
     }
 
     WHEN("A static RectangleBody object is added") {
-      sgr::CircleBody rect(&world, 1.f, sgr::BodyType::STATIC);
+      sgr::CircleBody rect(world, 1.f, sgr::BodyType::STATIC);
 
       THEN("The static RectangleBody object is not acted upon by forces") {
         sf::Vector2f startPosition = rect.getPosition();
@@ -135,7 +135,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
     }
 
     WHEN("A dynamic RectangleBody object is added") {
-      sgr::CircleBody rect(&world, 1.f, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody rect(world, 1.f, sgr::BodyType::DYNAMIC);
 
       THEN("The dynamic RectangleBody object is acted upon by forces") {
         sf::Vector2f startPosition = rect.getPosition();
@@ -147,7 +147,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
     WHEN("A static EdgeBody object is added") {
       sf::Vector2f start = sf::Vector2f(0.f, 0.f);
       sf::Vector2f end = sf::Vector2f(10.f, 0.f);
-      sgr::EdgeBody edge(&world, start, end);
+      sgr::EdgeBody edge(world, start, end);
 
       THEN("The static Edge object is not acted upon by forces") {
         sf::Vector2f startPosition = edge.getPosition();

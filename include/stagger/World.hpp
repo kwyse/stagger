@@ -64,14 +64,14 @@ public:
   ///
   /// \param body A Body-derived object to undergo simulation
   ///
-  void addBody(Body* body);
+  void addBody(Body& body);
 
   ///
   /// \brief Add an EdgeBody to the world
   ///
   /// \param body An EdgeBody object to undergo simulation
   ///
-  void addBody(EdgeBody* body);
+  void addBody(EdgeBody& body);
 
   ///
   /// \brief Set the gravity vector for the world

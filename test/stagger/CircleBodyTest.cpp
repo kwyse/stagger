@@ -11,7 +11,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
 
     WHEN("The CircleBody constructor is called") {
-      sgr::CircleBody circle(&world, 5.f);
+      sgr::CircleBody circle(world, 5.f);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(circle.getRadius() == 5.f);
@@ -20,7 +20,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
     }
 
     WHEN("The CircleBody constructor is called") {
-      sgr::CircleBody circle(&world, 10.f, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody circle(world, 10.f, sgr::BodyType::DYNAMIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(circle.getRadius() == 10.f);
@@ -29,7 +29,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
     }
 
     WHEN("The CircleBody constructor is called") {
-      sgr::CircleBody circle(&world, 15.f, 12);
+      sgr::CircleBody circle(world, 15.f, 12);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(circle.getRadius() == 15.f);
@@ -38,7 +38,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
     }
 
     WHEN("The CircleBody constructor is called") {
-      sgr::CircleBody circle(&world, 20.f, sgr::BodyType::DYNAMIC, 50);
+      sgr::CircleBody circle(world, 20.f, sgr::BodyType::DYNAMIC, 50);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(circle.getRadius() == 20.f);
@@ -47,7 +47,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
     }
 
     WHEN("The CircleBody constructor is called") {
-      sgr::CircleBody circle(&world, 20.f, 70, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody circle(world, 20.f, 70, sgr::BodyType::DYNAMIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(circle.getRadius() == 20.f);
@@ -61,7 +61,7 @@ SCENARIO("CircleBody parameters are changed", "[circleBody]") {
   GIVEN("An initialized CircleBody object") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
-    sgr::CircleBody circle(&world, 5.f);
+    sgr::CircleBody circle(world, 5.f);
 
     WHEN("The radius is set") {
       circle.setRadius(10.f);

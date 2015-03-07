@@ -11,15 +11,15 @@ namespace sgr
 {
 
 
-EdgeBody::EdgeBody(World* world, BodyType type)
+EdgeBody::EdgeBody(World& world, BodyType type)
 : Body(world, type)
 , mEdge({ sf::Vertex(), sf::Vertex() })
 {
   b2EdgeShape fixtureShape;
-  initializeFixture(&fixtureShape);
+  initializeFixture(fixtureShape);
 }
 
-EdgeBody::EdgeBody(World* world,
+EdgeBody::EdgeBody(World& world,
                    const sf::Vector2f& start,
                    const sf::Vector2f& end,
                    BodyType type)
@@ -28,7 +28,7 @@ EdgeBody::EdgeBody(World* world,
 {
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(start.x, -start.y), b2Vec2(end.x, -end.y));
-  initializeFixture(&fixtureShape);
+  initializeFixture(fixtureShape);
 }
 
 void EdgeBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -87,7 +87,7 @@ void EdgeBody::setEdgeVertices()
   b2EdgeShape fixtureShape;
   fixtureShape.Set(b2Vec2(mEdge[0].position.x, -mEdge[0].position.y),
                    b2Vec2(mEdge[1].position.x, -mEdge[1].position.y));
-  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
+  reinitializeFixture(*mBody->GetFixtureList(), fixtureShape);
 }
 
 

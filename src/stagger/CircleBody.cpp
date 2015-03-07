@@ -12,7 +12,7 @@ namespace sgr
 {
 
 
-CircleBody::CircleBody(World* world,
+CircleBody::CircleBody(World& world,
                        float radius,
                        BodyType type,
                        unsigned int pointCount)
@@ -25,10 +25,10 @@ CircleBody::CircleBody(World* world,
 
   b2CircleShape fixtureShape;
   fixtureShape.m_radius = radius;
-  initializeFixture(&fixtureShape);
+  initializeFixture(fixtureShape);
 }
 
-CircleBody::CircleBody(World* world,
+CircleBody::CircleBody(World& world,
                        float radius,
                        unsigned int pointCount,
                        BodyType type)

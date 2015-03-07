@@ -11,7 +11,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
 
     WHEN("The EdgeBody constructor is called without vertices or a BodyType") {
-      sgr::EdgeBody edge(&world);
+      sgr::EdgeBody edge(world);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(edge.getPointCount() == 2);
@@ -23,7 +23,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
     }
 
     WHEN("The EdgeBody constructor is called without vertices but with a BodyType") {
-      sgr::EdgeBody edge(&world, sgr::BodyType::STATIC);
+      sgr::EdgeBody edge(world, sgr::BodyType::STATIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(edge.getPointCount() == 2);
@@ -37,7 +37,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
     WHEN("The EdgeBody constructor is called with vertices but without a BodyType") {
       sf::Vector2f start(5.f, 10.f);
       sf::Vector2f end(20.f, 15.f);
-      sgr::EdgeBody edge(&world, start, end);
+      sgr::EdgeBody edge(world, start, end);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(edge.getPointCount() == 2);
@@ -51,7 +51,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
     WHEN("The EdgeBody constructor is called with vertices and a BodyType") {
       sf::Vector2f start(15.f, 5.f);
       sf::Vector2f end(2.f, 35.f);
-      sgr::EdgeBody edge(&world, start, end, sgr::BodyType::STATIC);
+      sgr::EdgeBody edge(world, start, end, sgr::BodyType::STATIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(edge.getPointCount() == 2);
@@ -70,7 +70,7 @@ SCENARIO("EdgeBody parameters are changed", "[edgeBody]") {
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
     sf::Vector2f start(0.f, -10.f);
     sf::Vector2f end(-20.f, -15.f);
-    sgr::EdgeBody edge(&world, start, end);
+    sgr::EdgeBody edge(world, start, end);
 
     WHEN("The start vertex is set using floats") {
       edge.setStartVertex(15.f, 5.f);

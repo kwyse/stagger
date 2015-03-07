@@ -11,7 +11,7 @@ SCENARIO("A Body-derived object is initialized", "[body]") {
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
 
     WHEN("The Body-dervied object's constructor is called without a BodyType") {
-      sgr::CircleBody body(&world, 1.f);
+      sgr::CircleBody body(world, 1.f);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(body.getPosition().x == 0.f);
@@ -24,7 +24,7 @@ SCENARIO("A Body-derived object is initialized", "[body]") {
     }
 
     WHEN("The Body-derived object's constructor is called with a BodyType") {
-      sgr::CircleBody body(&world, 1.f, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody body(world, 1.f, sgr::BodyType::DYNAMIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(body.getPosition().x == 0.f);
@@ -42,7 +42,7 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
   GIVEN("An initialized Body-dervied object") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
-    sgr::CircleBody body(&world, 1.f, sgr::BodyType::DYNAMIC);
+    sgr::CircleBody body(world, 1.f, sgr::BodyType::DYNAMIC);
 
     WHEN("The position is set using floats") {
       body.setPosition(10.f, 20.f);

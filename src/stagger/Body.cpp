@@ -11,9 +11,9 @@ namespace sgr
 {
 
 
-Body::Body(World* world, BodyType type)
+Body::Body(World& world, BodyType type)
 : mBody()
-, mPixelsPerMeter(world->getPixelsPerMeter())
+, mPixelsPerMeter(world.getPixelsPerMeter())
 {
   b2BodyDef bodyDef;
   switch(type) {
@@ -28,8 +28,8 @@ Body::Body(World* world, BodyType type)
       break;
   }
 
-  mBody = world->getB2World()->CreateBody(&bodyDef);
-  world->addBody(this);
+  mBody = world.getB2World()->CreateBody(&bodyDef);
+  world.addBody(*this);
 }
 
 void Body::update()
@@ -135,25 +135,25 @@ float Body::getRestitution() const
   return mBody->GetFixtureList()->GetRestitution();
 }
 
-void Body::initializeFixture(b2Shape* shape)
+void Body::initializeFixture(b2Shape& shape)
 {
   b2FixtureDef fixtureDef;
-  fixtureDef.shape = shape;
+  fixtureDef.shape = &shape;
   fixtureDef.density = 1.f;
   fixtureDef.friction = 0.3f;
   fixtureDef.restitution = 0.3f;
   mBody->CreateFixture(&fixtureDef);
 }
 
-void Body::reinitializeFixture(b2Fixture* fixture, b2Shape* shape)
+void Body::reinitializeFixture(b2Fixture& fixture, b2Shape& shape)
 {
-  float density = fixture->GetDensity();
-  float friction = fixture->GetFriction();
-  float restitution = fixture->GetRestitution();
+  float density = fixture.GetDensity();
+  float friction = fixture.GetFriction();
+  float restitution = fixture.GetRestitution();
 
-  mBody->DestroyFixture(fixture);
+  mBody->DestroyFixture(&fixture);
   b2FixtureDef fixtureDef;
-  fixtureDef.shape = shape;
+  fixtureDef.shape = &shape;
   fixtureDef.density = density;
   fixtureDef.friction = friction;
   fixtureDef.restitution = restitution;

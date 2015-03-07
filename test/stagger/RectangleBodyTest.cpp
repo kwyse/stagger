@@ -11,7 +11,7 @@ SCENARIO("A RectangleBody is initialized", "[rectangleBody]") {
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
 
     WHEN("The RectangleBody constructor is called without a BodyType") {
-      sgr::RectangleBody rect(&world, sf::Vector2f(5.f, 10.f));
+      sgr::RectangleBody rect(world, sf::Vector2f(5.f, 10.f));
 
       THEN("Then all parameters are initialized") {
         REQUIRE(rect.getSize().x == 5.f);
@@ -21,7 +21,7 @@ SCENARIO("A RectangleBody is initialized", "[rectangleBody]") {
     }
 
     WHEN("The RectangleBody constructor is called with a BodyType") {
-      sgr::RectangleBody rect(&world, sf::Vector2f(10.f, 15.f), sgr::BodyType::DYNAMIC);
+      sgr::RectangleBody rect(world, sf::Vector2f(10.f, 15.f), sgr::BodyType::DYNAMIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(rect.getSize().x == 10.f);
@@ -36,7 +36,7 @@ SCENARIO("RectangleBody parameters are changed", "[rectangleBody]") {
   GIVEN("An initialized RectangleBody object") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sgr::World world(window, sf::Vector2f(0.f, -9.8f));
-    sgr::RectangleBody rect(&world, sf::Vector2f(5.f, 10.f));
+    sgr::RectangleBody rect(world, sf::Vector2f(5.f, 10.f));
 
     WHEN("The size is set using floats") {
       rect.setSize(20.f, 2.f);

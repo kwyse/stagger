@@ -67,14 +67,14 @@ void World::render() {
   }
 }
 
-void World::addBody(Body* body)
+void World::addBody(Body& body)
 {
-  mImpl->mBodies.push_back(body);
+  mImpl->mBodies.push_back(&body);
 }
 
-void World::addBody(EdgeBody* body)
+void World::addBody(EdgeBody& body)
 {
-  mImpl->mEdges.push_back(body);
+  mImpl->mEdges.push_back(&body);
 }
 
 void World::setGravity(float x, float y)
