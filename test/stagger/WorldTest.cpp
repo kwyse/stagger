@@ -109,7 +109,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 
       THEN("The static CircleBody object is not acted upon by forces") {
         sf::Vector2f startPosition = circle.getPosition();
-        world.update();
+        world.update(sf::seconds(1.f / 60.f));
         REQUIRE(circle.getPosition().x == startPosition.x);
       }
     }
@@ -119,7 +119,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 
       THEN("The dynamic CircleBody object is acted upon by forces") {
         sf::Vector2f startPosition = circle.getPosition();
-        world.update();
+        world.update(sf::seconds(1.f / 60.f));
         REQUIRE(circle.getPosition().x != startPosition.x);
       }
     }
@@ -129,7 +129,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 
       THEN("The static RectangleBody object is not acted upon by forces") {
         sf::Vector2f startPosition = rect.getPosition();
-        world.update();
+        world.update(sf::seconds(1.f / 60.f));
         REQUIRE(rect.getPosition().x == startPosition.x);
       }
     }
@@ -139,7 +139,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 
       THEN("The dynamic RectangleBody object is acted upon by forces") {
         sf::Vector2f startPosition = rect.getPosition();
-        world.update();
+        world.update(sf::seconds(1.f / 60.f));
         REQUIRE(rect.getPosition().x != startPosition.x);
       }
     }
@@ -151,7 +151,7 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 
       THEN("The static Edge object is not acted upon by forces") {
         sf::Vector2f startPosition = edge.getPosition();
-        world.update();
+        world.update(sf::seconds(1.f / 60.f));
         REQUIRE(edge.getPosition().x == startPosition.x);
       }
     }

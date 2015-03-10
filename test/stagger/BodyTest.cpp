@@ -163,7 +163,7 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
     WHEN("A force is applied to the center using floats") {
       float posX = body.getPosition().x, posY = body.getPosition().y;
       body.applyForceToCenter(10.f, 10.f);
-      world.update();
+      world.update(sf::seconds(1.f / 60.f));
 
       THEN("The position of the body has changed") {
         REQUIRE(body.getPosition().x > posX);
@@ -174,7 +174,7 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
     WHEN("A force is applied to the center using a sf::Vector2f") {
       float posX = body.getPosition().x, posY = body.getPosition().y;
       body.applyForceToCenter(sf::Vector2f(-5.f, 20.f));
-      world.update();
+      world.update(sf::seconds(1.f / 60.f));
 
       THEN("The linear velocity value is updated") {
         REQUIRE(body.getPosition().x < posX);
