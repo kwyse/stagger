@@ -7,8 +7,7 @@
 
 SCENARIO("A CircleBody is initialized", "[circleBody]") {
   GIVEN("A World object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
 
     WHEN("The CircleBody constructor is called") {
       sgr::CircleBody circle(world, 5.f);
@@ -59,8 +58,7 @@ SCENARIO("A CircleBody is initialized", "[circleBody]") {
 
 SCENARIO("CircleBody parameters are changed", "[circleBody]") {
   GIVEN("An initialized CircleBody object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
     sgr::CircleBody circle(world, 5.f);
 
     WHEN("The radius is set") {

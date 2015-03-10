@@ -7,8 +7,7 @@
 
 SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
   GIVEN("A World object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
 
     WHEN("The EdgeBody constructor is called without vertices or a BodyType") {
       sgr::EdgeBody edge(world);
@@ -66,8 +65,7 @@ SCENARIO("A EdgeBody is initialized", "[edgeBody]") {
 
 SCENARIO("EdgeBody parameters are changed", "[edgeBody]") {
   GIVEN("An initialized EdgeBody object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
     sf::Vector2f start(0.f, -10.f);
     sf::Vector2f end(-20.f, -15.f);
     sgr::EdgeBody edge(world, start, end);

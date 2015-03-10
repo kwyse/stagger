@@ -63,8 +63,7 @@ SCENARIO("A World is initialized", "[world]") {
 
 SCENARIO("World parameters are changed", "[world]") {
   GIVEN("An initialized World object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window);
+    sgr::World world;
 
     WHEN("The gravity is set to a new value using floats") {
       world.setGravity(5.f, -5.f);
@@ -115,9 +114,8 @@ SCENARIO("Body objects can be added to World objects", "[world]")
 {
   GIVEN("An initialized World object")
   {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
     sf::Vector2f gravity(10.f, 0.f);
-    sgr::World world(window, gravity);
+    sgr::World world(gravity);
 
     WHEN("A static CircleBody object is added") {
       sgr::CircleBody circle(world, 1.f, sgr::BodyType::STATIC);

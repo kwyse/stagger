@@ -7,8 +7,7 @@
 
 SCENARIO("A RectangleBody is initialized", "[rectangleBody]") {
   GIVEN("A World object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
 
     WHEN("The RectangleBody constructor is called without a BodyType") {
       sgr::RectangleBody rect(world, sf::Vector2f(5.f, 10.f));
@@ -34,8 +33,7 @@ SCENARIO("A RectangleBody is initialized", "[rectangleBody]") {
 
 SCENARIO("RectangleBody parameters are changed", "[rectangleBody]") {
   GIVEN("An initialized RectangleBody object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
     sgr::RectangleBody rect(world, sf::Vector2f(5.f, 10.f));
 
     WHEN("The size is set using floats") {
