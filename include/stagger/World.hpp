@@ -5,6 +5,7 @@
 
 
 #include <memory>
+#include <SFML/System/Time.hpp>
 #include <SFML/System/Vector2.hpp>
 
 
@@ -52,7 +53,9 @@ public:
   ///
   /// \brief Step through the simulation and update the bodies
   ///
-  void update();
+  /// \param delta The time interval since last update
+  ///
+  void update(sf::Time delta);
 
   ///
   /// \brief Draw the bodies the window

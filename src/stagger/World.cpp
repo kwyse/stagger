@@ -51,11 +51,12 @@ World::~World()
   // Nothing to do
 }
 
-void World::update()
+void World::update(sf::Time delta)
 {
-  mImpl->mWorld.Step(1.f / mImpl->mTicksPerSecond,
+  mImpl->mWorld.Step(delta.asSeconds(),
                      VEL_ITERATIONS,
                      POS_ITERATIONS);
+
   for (Body* body : mImpl->mBodies) body->update();
 }
 
