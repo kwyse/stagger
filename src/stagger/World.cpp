@@ -19,8 +19,8 @@ namespace sgr
 
 struct World::Impl
 {
-  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
-  : mWindow(window)
+  Impl(sf::Vector2f gravity)
+  : mWindow()
   , mWorld(b2Vec2(gravity.x, gravity.y))
   , mPixelsPerMeter(16)
   , mTicksPerSecond(120.f)
@@ -31,7 +31,19 @@ struct World::Impl
     // Nothing to do
   }
 
-  sf::RenderWindow& mWindow;
+  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
+  : mWindow(&window)
+  , mWorld(b2Vec2(gravity.x, gravity.y))
+  , mPixelsPerMeter(16)
+  , mTicksPerSecond(120.f)
+  , mBodies()
+  , mEdges()
+  , bRenderEdges(false)
+  {
+    // Nothing to do
+  }
+
+  sf::RenderWindow* mWindow;
   b2World mWorld; // TODO: Should this be dynamically allocated?
   int mPixelsPerMeter;
   float mTicksPerSecond;
@@ -39,6 +51,12 @@ struct World::Impl
   std::vector<EdgeBody*> mEdges;
   bool bRenderEdges;
 };
+
+World::World(sf::Vector2f gravity)
+: mImpl(new World::Impl(gravity))
+{
+  // Nothing to do
+}
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
 : mImpl(new World::Impl(window, gravity))
@@ -64,7 +82,7 @@ void World::render() {
   for (Body* body : mImpl->mBodies) {
     EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
     if (edgeBody && !(mImpl->bRenderEdges)) continue;
-    mImpl->mWindow.draw(*body);
+    mImpl->mWindow->draw(*body);
   }
 }
 

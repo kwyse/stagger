@@ -30,6 +30,17 @@ class EdgeBody;
 class World
 {
 public:
+
+  ///
+  /// \brief Construct a new world
+  ///
+  /// This constructor constructs a new World object, accepting an optional
+  /// gravity vector.
+  ///
+  /// \param gravity The gravity vector used to simulate the bodies, in m/s^2
+  ///
+  explicit World(sf::Vector2f gravity = sf::Vector2f(0.f, 0.f));
+
   ///
   /// \brief Construct a new world
   ///
