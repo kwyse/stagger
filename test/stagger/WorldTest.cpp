@@ -6,7 +6,19 @@
 
 
 SCENARIO("A World is initialized", "[world]") {
-  GIVEN("A RenderWindow") {
+  GIVEN("Neither a RenderWindow nor a gravity vector") {
+    WHEN("The World constuctor is called") {
+      sgr::World world;
+
+      THEN("The other parameters are initialized") {
+        REQUIRE(world.getGravity().x == 0.f);
+        REQUIRE(world.getGravity().y == -0.f);
+        REQUIRE(world.getPixelsPerMeter() == 16);
+      }
+    }
+  }
+
+  GIVEN("A RenderWindow but not a gravity vector") {
     sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
 
     WHEN("The World constuctor is called") {
@@ -15,6 +27,19 @@ SCENARIO("A World is initialized", "[world]") {
       THEN("The other parameters are initialized") {
         REQUIRE(world.getGravity().x == 0.f);
         REQUIRE(world.getGravity().y == -0.f);
+        REQUIRE(world.getPixelsPerMeter() == 16);
+      }
+    }
+  }
+
+  GIVEN("A gravity vector but not a RenderWindow") {
+    WHEN("The World constuctor is called") {
+      sf::Vector2f gravity(8.f, -8.f);
+      sgr::World world(gravity);
+
+      THEN("The other parameters are initialized") {
+        REQUIRE(world.getGravity().x == 8.f);
+        REQUIRE(world.getGravity().y == -8.f);
         REQUIRE(world.getPixelsPerMeter() == 16);
       }
     }
