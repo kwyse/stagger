@@ -109,11 +109,6 @@ int World::getPixelsPerMeter() const
   return mImpl->mPixelsPerMeter;
 }
 
-float World::getTicksPerSecond() const
-{
-  return mImpl->mTicksPerSecond;
-}
-
 b2World* World::getB2World() const
 {
   return &mImpl->mWorld;

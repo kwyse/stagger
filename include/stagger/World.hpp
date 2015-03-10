@@ -130,13 +130,6 @@ public:
   int getPixelsPerMeter() const;
 
   ///
-  /// \brief Get the tick rate for the world
-  ///
-  /// \return The tick rate for the world
-  ///
-  float getTicksPerSecond() const;
-
-  ///
   /// \brief Get the underlying b2World object manipulating the objects
   ///
   /// \return The underlying b2World object

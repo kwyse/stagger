@@ -16,7 +16,6 @@ SCENARIO("A World is initialized", "[world]") {
         REQUIRE(world.getGravity().x == 0.f);
         REQUIRE(world.getGravity().y == -0.f);
         REQUIRE(world.getPixelsPerMeter() == 16);
-        REQUIRE(world.getTicksPerSecond() == 120.f);
       }
     }
   }
@@ -32,7 +31,6 @@ SCENARIO("A World is initialized", "[world]") {
         REQUIRE(world.getGravity().x == gravity.x);
         REQUIRE(world.getGravity().y == gravity.y);
         REQUIRE(world.getPixelsPerMeter() == 16);
-        REQUIRE(world.getTicksPerSecond() == 120.f);
       }
     }
   }
@@ -67,14 +65,6 @@ SCENARIO("World parameters are changed", "[world]") {
 
       THEN("The pixels-per-meter is updated") {
         REQUIRE(world.getPixelsPerMeter() == 32);
-      }
-    }
-
-    WHEN("The ticks-per-second value is set") {
-      world.setTicksPerSecond(60.f);
-
-      THEN("The ticks-per-second value is updated") {
-        REQUIRE(world.getTicksPerSecond() == 60.f);
       }
     }
 

@@ -67,7 +67,7 @@ int main()
     }
 
     if (lag > FRAME_DURATION) {
-      world.update();
+      world.update(FRAME_DURATION);
       lag -= FRAME_DURATION;
     }
 
