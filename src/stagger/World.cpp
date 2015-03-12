@@ -23,7 +23,6 @@ struct World::Impl
   : mWindow()
   , mWorld(b2Vec2(gravity.x, gravity.y))
   , mPixelsPerMeter(16)
-  , mTicksPerSecond(120.f)
   , mBodies()
   , mEdges()
   , bRenderEdges(false)
@@ -35,7 +34,6 @@ struct World::Impl
   : mWindow(&window)
   , mWorld(b2Vec2(gravity.x, gravity.y))
   , mPixelsPerMeter(16)
-  , mTicksPerSecond(120.f)
   , mBodies()
   , mEdges()
   , bRenderEdges(false)
@@ -46,7 +44,6 @@ struct World::Impl
   sf::RenderWindow* mWindow;
   b2World mWorld; // TODO: Should this be dynamically allocated?
   int mPixelsPerMeter;
-  float mTicksPerSecond;
   std::vector<Body*> mBodies;
   std::vector<EdgeBody*> mEdges;
   bool bRenderEdges;
@@ -109,11 +106,6 @@ void World::setGravity(const sf::Vector2f& gravity)
 void World::setPixelsPerMeter(int pixels)
 {
   mImpl->mPixelsPerMeter = pixels;
-}
-
-void World::setTicksPerSecond(float ticksPerSecond)
-{
-  mImpl->mTicksPerSecond = ticksPerSecond;
 }
 
 const sf::Vector2f World::getGravity() const

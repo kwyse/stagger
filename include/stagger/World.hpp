@@ -116,13 +116,6 @@ public:
   void setPixelsPerMeter(int pixelsPerMeter);
 
   ///
-  /// \brief Set the tick rate for the stepping function for the world
-  ///
-  /// \param ticksPerSecond The new value for the tick rate
-  ///
-  void setTicksPerSecond(float ticksPerSecond); // TODO: Should this be an int?
-
-  ///
   /// \brief Get the gravity vector for the world
   ///
   /// \return The gravity vector for the world
