@@ -76,10 +76,12 @@ void World::update(sf::Time delta)
 }
 
 void World::render() {
-  for (Body* body : mImpl->mBodies) {
-    EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
-    if (edgeBody && !(mImpl->bRenderEdges)) continue;
-    mImpl->mWindow->draw(*body);
+  if (mImpl->mWindow) {
+    for (Body* body : mImpl->mBodies) {
+      EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
+      if (edgeBody && !(mImpl->bRenderEdges)) continue;
+      mImpl->mWindow->draw(*body);
+    }
   }
 }
 
