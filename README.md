@@ -45,6 +45,7 @@ int main()
 {
   sf::RenderWindow window(sf::VideoMode(640, 480), "Example");
   sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+  world.enableEdgeRendering(true);
 
   sgr::CircleBody circle(world, 1.f, sgr::BodyType::DYNAMIC);
   circle.setPosition(10.f, 5.f);
