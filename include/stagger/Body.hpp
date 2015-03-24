@@ -47,7 +47,7 @@ public:
   /// \param world The containing world object for the body
   /// \param type The type of the body (static, dynamic or kinematic)
   ///
-  explicit Body(World* world, BodyType type = BodyType::STATIC);
+  explicit Body(World& world, BodyType type = BodyType::STATIC);
 
   ///
   /// \brief Update the position of the body for rendering
@@ -220,7 +220,7 @@ protected:
   ///
   /// \param shape The b2Shape subclass object to be used as the fixture
   ///
-  void initializeFixture(b2Shape* shape);
+  void initializeFixture(b2Shape& shape);
 
   ///
   /// \brief Change the shape of a fixture
@@ -231,7 +231,7 @@ protected:
   /// \param fixture The old b2Fixture
   /// \param shape The new b2Shape
   ///
-  void reinitializeFixture(b2Fixture* fixture, b2Shape* shape);
+  void reinitializeFixture(b2Fixture& fixture, b2Shape& shape);
 
   static constexpr float DEGREES_PER_RADIAN = 57.2957795f;
 

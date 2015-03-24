@@ -30,7 +30,7 @@ therefore pass arguments in terms of meters, and can set the ratio between
 the two using `World::setPixelsPerMeter()`.
 
 ```cpp
-sgr::CircleBody circle(&world, 1.f, sgr::BodyType::DYNAMIC);
+sgr::CircleBody circle(world, 1.f, sgr::BodyType::DYNAMIC);
 circle.setPosition(10.f, 5.f);
 circle.setFillColor(sf::Color::Red);
 ```
@@ -45,14 +45,15 @@ int main()
 {
   sf::RenderWindow window(sf::VideoMode(640, 480), "Example");
   sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+  world.enableEdgeRendering(true);
 
-  sgr::CircleBody circle(&world, 1.f, sgr::BodyType::DYNAMIC);
+  sgr::CircleBody circle(world, 1.f, sgr::BodyType::DYNAMIC);
   circle.setPosition(10.f, 5.f);
   circle.setFillColor(sf::Color::Red);
 
   sf::Vector2f start(5.f, 10.f);
   sf::Vector2f end(20.f, 15.f);
-  sgr::EdgeBody slope(&world, start, end);
+  sgr::EdgeBody slope(world, start, end);
 
   sf::Clock elapsedTime;
   sf::Time lag = sf::Time::Zero;
@@ -67,7 +68,7 @@ int main()
     }
 
     if (lag > FRAME_DURATION) {
-      world.update();
+      world.update(FRAME_DURATION);
       lag -= FRAME_DURATION;
     }
 

@@ -19,11 +19,10 @@ namespace sgr
 
 struct World::Impl
 {
-  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
-  : mWindow(window)
+  Impl(sf::Vector2f gravity)
+  : mWindow()
   , mWorld(b2Vec2(gravity.x, gravity.y))
   , mPixelsPerMeter(16)
-  , mTicksPerSecond(120.f)
   , mBodies()
   , mEdges()
   , bRenderEdges(false)
@@ -31,14 +30,30 @@ struct World::Impl
     // Nothing to do
   }
 
-  sf::RenderWindow& mWindow;
+  Impl(sf::RenderWindow& window, sf::Vector2f gravity)
+  : mWindow(&window)
+  , mWorld(b2Vec2(gravity.x, gravity.y))
+  , mPixelsPerMeter(16)
+  , mBodies()
+  , mEdges()
+  , bRenderEdges(false)
+  {
+    // Nothing to do
+  }
+
+  sf::RenderWindow* mWindow;
   b2World mWorld; // TODO: Should this be dynamically allocated?
   int mPixelsPerMeter;
-  float mTicksPerSecond;
   std::vector<Body*> mBodies;
   std::vector<EdgeBody*> mEdges;
   bool bRenderEdges;
 };
+
+World::World(sf::Vector2f gravity)
+: mImpl(new World::Impl(gravity))
+{
+  // Nothing to do
+}
 
 World::World(sf::RenderWindow& window, sf::Vector2f gravity)
 : mImpl(new World::Impl(window, gravity))
@@ -51,30 +66,33 @@ World::~World()
   // Nothing to do
 }
 
-void World::update()
+void World::update(sf::Time delta)
 {
-  mImpl->mWorld.Step(1.f / mImpl->mTicksPerSecond,
+  mImpl->mWorld.Step(delta.asSeconds(),
                      VEL_ITERATIONS,
                      POS_ITERATIONS);
+
   for (Body* body : mImpl->mBodies) body->update();
 }
 
 void World::render() {
-  for (Body* body : mImpl->mBodies) {
-    EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
-    if (edgeBody && !(mImpl->bRenderEdges)) continue;
-    mImpl->mWindow.draw(*body);
+  if (mImpl->mWindow) {
+    for (Body* body : mImpl->mBodies) {
+      EdgeBody* edgeBody = dynamic_cast<EdgeBody*>(body);
+      if (edgeBody && !(mImpl->bRenderEdges)) continue;
+      mImpl->mWindow->draw(*body);
+    }
   }
 }
 
-void World::addBody(Body* body)
+void World::addBody(Body& body)
 {
-  mImpl->mBodies.push_back(body);
+  mImpl->mBodies.push_back(&body);
 }
 
-void World::addBody(EdgeBody* body)
+void World::addBody(EdgeBody& body)
 {
-  mImpl->mEdges.push_back(body);
+  mImpl->mEdges.push_back(&body);
 }
 
 void World::setGravity(float x, float y)
@@ -92,11 +110,6 @@ void World::setPixelsPerMeter(int pixels)
   mImpl->mPixelsPerMeter = pixels;
 }
 
-void World::setTicksPerSecond(float ticksPerSecond)
-{
-  mImpl->mTicksPerSecond = ticksPerSecond;
-}
-
 const sf::Vector2f World::getGravity() const
 {
   b2Vec2 gravity = mImpl->mWorld.GetGravity();
@@ -106,11 +119,6 @@ const sf::Vector2f World::getGravity() const
 int World::getPixelsPerMeter() const
 {
   return mImpl->mPixelsPerMeter;
-}
-
-float World::getTicksPerSecond() const
-{
-  return mImpl->mTicksPerSecond;
 }
 
 b2World* World::getB2World() const

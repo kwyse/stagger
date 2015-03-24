@@ -33,7 +33,7 @@ public:
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
   /// \param pointCount The number of vertices making up the circle
   ///
-  CircleBody(World* world,
+  CircleBody(World& world,
              float radius,
              BodyType type = BodyType::STATIC,
              unsigned int pointCount = 30);
@@ -50,7 +50,7 @@ public:
   /// \param pointCount The number of vertices making up the circle
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
   ///
-  CircleBody(World* world,
+  CircleBody(World& world,
              float radius,
              unsigned int pointCount,
              BodyType type = BodyType::STATIC);

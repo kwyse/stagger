@@ -33,7 +33,7 @@ public:
   /// \param world The sgr::World container for the body
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
   ///
-  EdgeBody(World* world, BodyType type = BodyType::STATIC);
+  EdgeBody(World& world, BodyType type = BodyType::STATIC);
 
   ///
   /// \brief Construct a new edge body
@@ -43,7 +43,7 @@ public:
   /// \param end The ending coordinates of the edge, in meters
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
   ///
-  EdgeBody(World* world,
+  EdgeBody(World& world,
            const sf::Vector2f& start,
            const sf::Vector2f& end,
            BodyType type = BodyType::STATIC);

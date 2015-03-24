@@ -5,6 +5,7 @@
 
 
 #include <memory>
+#include <SFML/System/Time.hpp>
 #include <SFML/System/Vector2.hpp>
 
 
@@ -29,6 +30,17 @@ class EdgeBody;
 class World
 {
 public:
+
+  ///
+  /// \brief Construct a new world
+  ///
+  /// This constructor constructs a new World object, accepting an optional
+  /// gravity vector.
+  ///
+  /// \param gravity The gravity vector used to simulate the bodies, in m/s^2
+  ///
+  explicit World(sf::Vector2f gravity = sf::Vector2f(0.f, 0.f));
+
   ///
   /// \brief Construct a new world
   ///
@@ -52,7 +64,9 @@ public:
   ///
   /// \brief Step through the simulation and update the bodies
   ///
-  void update();
+  /// \param delta The time interval since last update
+  ///
+  void update(sf::Time delta);
 
   ///
   /// \brief Draw the bodies the window
@@ -64,14 +78,14 @@ public:
   ///
   /// \param body A Body-derived object to undergo simulation
   ///
-  void addBody(Body* body);
+  void addBody(Body& body);
 
   ///
   /// \brief Add an EdgeBody to the world
   ///
   /// \param body An EdgeBody object to undergo simulation
   ///
-  void addBody(EdgeBody* body);
+  void addBody(EdgeBody& body);
 
   ///
   /// \brief Set the gravity vector for the world
@@ -102,13 +116,6 @@ public:
   void setPixelsPerMeter(int pixelsPerMeter);
 
   ///
-  /// \brief Set the tick rate for the stepping function for the world
-  ///
-  /// \param ticksPerSecond The new value for the tick rate
-  ///
-  void setTicksPerSecond(float ticksPerSecond); // TODO: Should this be an int?
-
-  ///
   /// \brief Get the gravity vector for the world
   ///
   /// \return The gravity vector for the world
@@ -125,13 +132,6 @@ public:
   /// \see setPixelsPerMeter
   ///
   int getPixelsPerMeter() const;
-
-  ///
-  /// \brief Get the tick rate for the world
-  ///
-  /// \return The tick rate for the world
-  ///
-  float getTicksPerSecond() const;
 
   ///
   /// \brief Get the underlying b2World object manipulating the objects

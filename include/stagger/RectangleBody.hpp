@@ -28,7 +28,7 @@ public:
   /// \param size The size of the body, in meters
   /// \param type The sgr::BodyType (static, dynamic or kinematic)
   ///
-  RectangleBody(World* world,
+  RectangleBody(World& world,
                 const sf::Vector2f& size,
                 BodyType type = BodyType::STATIC);
 

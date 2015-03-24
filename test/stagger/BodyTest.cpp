@@ -7,11 +7,10 @@
 
 SCENARIO("A Body-derived object is initialized", "[body]") {
   GIVEN("A World object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
 
     WHEN("The Body-dervied object's constructor is called without a BodyType") {
-      sgr::CircleBody body(&world, 1.f);
+      sgr::CircleBody body(world, 1.f);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(body.getPosition().x == 0.f);
@@ -24,7 +23,7 @@ SCENARIO("A Body-derived object is initialized", "[body]") {
     }
 
     WHEN("The Body-derived object's constructor is called with a BodyType") {
-      sgr::CircleBody body(&world, 1.f, sgr::BodyType::DYNAMIC);
+      sgr::CircleBody body(world, 1.f, sgr::BodyType::DYNAMIC);
 
       THEN("Then all parameters are initialized") {
         REQUIRE(body.getPosition().x == 0.f);
@@ -40,9 +39,8 @@ SCENARIO("A Body-derived object is initialized", "[body]") {
 
 SCENARIO("Body-dervied object parameters are changed", "[body]") {
   GIVEN("An initialized Body-dervied object") {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
-    sgr::World world(window, sf::Vector2f(0.f, -9.8f));
-    sgr::CircleBody body(&world, 1.f, sgr::BodyType::DYNAMIC);
+    sgr::World world(sf::Vector2f(0.f, -9.8f));
+    sgr::CircleBody body(world, 1.f, sgr::BodyType::DYNAMIC);
 
     WHEN("The position is set using floats") {
       body.setPosition(10.f, 20.f);
@@ -163,7 +161,7 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
     WHEN("A force is applied to the center using floats") {
       float posX = body.getPosition().x, posY = body.getPosition().y;
       body.applyForceToCenter(10.f, 10.f);
-      world.update();
+      world.update(sf::seconds(1.f / 60.f));
 
       THEN("The position of the body has changed") {
         REQUIRE(body.getPosition().x > posX);
@@ -174,7 +172,7 @@ SCENARIO("Body-dervied object parameters are changed", "[body]") {
     WHEN("A force is applied to the center using a sf::Vector2f") {
       float posX = body.getPosition().x, posY = body.getPosition().y;
       body.applyForceToCenter(sf::Vector2f(-5.f, 20.f));
-      world.update();
+      world.update(sf::seconds(1.f / 60.f));
 
       THEN("The linear velocity value is updated") {
         REQUIRE(body.getPosition().x < posX);

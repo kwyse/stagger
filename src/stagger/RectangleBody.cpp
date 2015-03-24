@@ -11,7 +11,7 @@ namespace sgr
 {
 
 
-RectangleBody::RectangleBody(World* world,
+RectangleBody::RectangleBody(World& world,
                              const sf::Vector2f& size,
                              BodyType type)
 : Body(world, type)
@@ -23,7 +23,7 @@ RectangleBody::RectangleBody(World* world,
 
   b2PolygonShape fixtureShape;
   fixtureShape.SetAsBox(size.x / 2, size.y / 2);
-  initializeFixture(&fixtureShape);
+  initializeFixture(fixtureShape);
 }
 
 void RectangleBody::setSize(float width, float height)
@@ -37,7 +37,7 @@ void RectangleBody::setSize(const sf::Vector2f& size)
 
   b2PolygonShape fixtureShape;
   fixtureShape.SetAsBox(size.x / 2, size.y / 2);
-  reinitializeFixture(mBody->GetFixtureList(), &fixtureShape);
+  reinitializeFixture(*mBody->GetFixtureList(), fixtureShape);
 
   Shape::update();
 }
