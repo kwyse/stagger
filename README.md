@@ -1,10 +1,6 @@
 # Stagger - A Box2D wrapper for SFML
 
-## WARNING
-
-Stagger is in heavy development and interface changes are likely!
-
-## Depenencies
+## Dependencies
 
 Stagger requires both [SFML](http://www.sfml-dev.org/) and
 [Box2D](http://box2d.org/) when building. It also requires
@@ -38,7 +34,7 @@ circle.setFillColor(sf::Color::Red);
 In the game loop, calling `World::update()` and `World::render()` will update
 the positions of the objects and render the objects respectively.
 
-## A Simple Example
+## A simple example
 
 ```cpp
 int main()
